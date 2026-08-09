@@ -1,7 +1,9 @@
-import { Award } from "lucide-react";
+import { Award, Sparkles, Star, type LucideIcon } from "lucide-react";
 
 import { Reveal } from "@/components/motion/reveal";
 import { achievements } from "@/lib/content";
+
+const icons: LucideIcon[] = [Award, Star, Sparkles];
 
 export function Achievements() {
   return (
@@ -13,17 +15,28 @@ export function Achievements() {
           </h2>
         </Reveal>
 
-        <div className="border-border bg-card mt-16 divide-y rounded-xl border sm:grid sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-          {achievements.map((achievement, i) => (
-            <Reveal key={achievement.title} delay={i * 0.08} className="p-8">
-              <Award className="text-primary size-5" aria-hidden="true" />
-              <h3 className="font-heading mt-4 text-base font-semibold text-balance">
-                {achievement.title}
-              </h3>
-              <p className="text-muted-foreground mt-2 text-sm">{achievement.org}</p>
-              <p className="mt-3 text-sm leading-relaxed">{achievement.description}</p>
-            </Reveal>
-          ))}
+        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-3">
+          {achievements.map((achievement, i) => {
+            const Icon = icons[i % icons.length]!;
+            return (
+              <Reveal key={achievement.title} delay={i * 0.08}>
+                <div className="border-border bg-card h-full rounded-xl border p-6 text-center sm:text-left">
+                  <div className="bg-accent text-accent-foreground mx-auto flex size-12 items-center justify-center rounded-full sm:mx-0">
+                    <Icon className="size-5" aria-hidden="true" />
+                  </div>
+                  <h3 className="font-heading mt-4 text-base font-semibold text-balance">
+                    {achievement.title}
+                  </h3>
+                  <p className="text-primary mt-1 text-xs font-medium tracking-wide uppercase">
+                    {achievement.org}
+                  </p>
+                  <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+                    {achievement.description}
+                  </p>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

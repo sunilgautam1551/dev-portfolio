@@ -2,7 +2,7 @@ import { Reveal } from "@/components/motion/reveal";
 import { experience, identity, summary } from "@/lib/content";
 
 const quickFacts = [
-  { label: "Experience", value: "5.7+ years" },
+  { label: "Experience", value: "6+ years" },
   { label: "Focus", value: "Frontend architecture & design systems" },
   { label: "Most recently", value: `${experience[0]!.role}, ${experience[0]!.company}` },
   { label: "Based in", value: identity.location },

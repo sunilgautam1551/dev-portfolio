@@ -9,7 +9,7 @@ import { useLayoutEffect, useRef } from "react";
 
 import { Button } from "@/components/ui/button";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
-import { identity, tagline } from "@/lib/content";
+import { heroStats, heroTechTags, identity, tagline } from "@/lib/content";
 
 import { HeroGraphic } from "./hero-graphic";
 
@@ -89,6 +89,33 @@ export function Hero() {
 
           <motion.div
             custom={3}
+            initial="hidden"
+            animate="visible"
+            variants={textVariants}
+            className="mt-8 flex flex-wrap gap-2"
+          >
+            {heroTechTags.map((tag) => (
+              <span
+                key={tag}
+                className="border-primary/25 bg-accent text-accent-foreground rounded-full border px-3 py-1 text-xs font-medium"
+              >
+                {tag}
+              </span>
+            ))}
+          </motion.div>
+
+          <motion.p
+            custom={4}
+            initial="hidden"
+            animate="visible"
+            variants={textVariants}
+            className="text-muted-foreground mt-4 font-mono text-xs tracking-wide sm:text-sm"
+          >
+            {heroStats.join(" · ")}
+          </motion.p>
+
+          <motion.div
+            custom={5}
             initial="hidden"
             animate="visible"
             variants={textVariants}

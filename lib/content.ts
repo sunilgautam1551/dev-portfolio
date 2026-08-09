@@ -1,10 +1,15 @@
 import type {
   AchievementEntry,
+  CaseStudy,
   EducationEntry,
+  EngineeringPillar,
   ExperienceEntry,
+  HomeSkillGroup,
   Identity,
+  ImpactStat,
   NavSection,
   ProjectEntry,
+  SecondaryProject,
   SkillGroup,
 } from "@/types/content";
 
@@ -19,9 +24,52 @@ export const identity: Identity = {
 };
 
 export const tagline =
-  "I build fast, accessible, high-density interfaces for enterprise SaaS — from architecture to production rollout.";
+  "I architect and build scalable React applications for complex enterprise workflows — from frontend architecture and design systems to performance and production.";
 
-export const summary = `I'm a Senior Frontend Engineer with 5.7+ years of experience building scalable, high-performance SaaS and enterprise web applications using React.js, Next.js, TypeScript, and modern frontend architectures. My expertise spans frontend architecture, design systems, performance optimization, accessibility (WCAG 2.2), and enterprise-grade UI engineering. I have a proven track record of leading frontend initiatives, mentoring developers, and delivering scalable platforms with real-time workflows and high-volume data visualization — collaborating closely with product, backend, and DevOps teams to ship maintainable, customer-focused solutions in Agile environments.`;
+export const heroTechTags = ["React", "TypeScript", "Next.js", "Frontend Architecture"];
+
+export const heroStats = [
+  "6+ Years",
+  "Enterprise SaaS",
+  "Real-time Applications",
+  "High-Density Data UI",
+];
+
+export const summary = `I'm a Senior Frontend Engineer with 6+ years of experience building scalable, high-performance SaaS and enterprise web applications using React.js, Next.js, TypeScript, and modern frontend architectures. My expertise spans frontend architecture, design systems, performance optimization, accessibility (WCAG 2.2), and enterprise-grade UI engineering. I have a proven track record of leading frontend initiatives, mentoring developers, and delivering scalable platforms with real-time workflows and high-volume data visualization — collaborating closely with product, backend, and DevOps teams to ship maintainable, customer-focused solutions in Agile environments.`;
+
+export const impactStats: ImpactStat[] = [
+  { value: "30%", label: "Bundle Size Reduction" },
+  { value: "35%", label: "Load Performance Improvement" },
+  { value: "10K+", label: "Live Asset Markers" },
+  { value: "13/17", label: "Core Modules Built Independently" },
+];
+
+export const engineeringPillars: EngineeringPillar[] = [
+  {
+    title: "Frontend Architecture",
+    description:
+      "Component-driven React + Next.js App Router architecture, shared design systems, and micro-frontend strategies for large product surfaces.",
+    icon: "Boxes",
+  },
+  {
+    title: "Performance",
+    description:
+      "Route-based code splitting, lazy loading, memoization, and asset optimization — the playbook behind a 30% smaller bundle and 35% faster loads.",
+    icon: "Gauge",
+  },
+  {
+    title: "Enterprise UI & Data",
+    description:
+      "High-density dashboards, real-time maps, and large data grids built with Ag-Grid, Highcharts, and Leaflet — tuned to stay smooth at scale.",
+    icon: "LayoutGrid",
+  },
+  {
+    title: "Security & Auth",
+    description:
+      "Enterprise-grade authorization with Keycloak, NextAuth, and RBAC/ABAC access-control models.",
+    icon: "ShieldCheck",
+  },
+];
 
 export const skillGroups: SkillGroup[] = [
   {
@@ -104,6 +152,60 @@ export const skillGroups: SkillGroup[] = [
   },
 ];
 
+/**
+ * Condensed view of the same skill set for the homepage — the full
+ * `skillGroups` list above stays comprehensive for ATS parsing on /resume,
+ * but a portfolio page reads better with a handful of high-signal groups
+ * plus a lightweight catch-all rather than every keyword boxed and labeled.
+ */
+export const homeSkillGroups: HomeSkillGroup[] = [
+  {
+    title: "Core",
+    icon: "Code2",
+    items: ["React", "TypeScript", "JavaScript (ES6+)", "Next.js"],
+  },
+  {
+    title: "Architecture",
+    icon: "Boxes",
+    items: ["Frontend Architecture", "Design Systems", "Micro-Frontends", "Performance"],
+  },
+  {
+    title: "Enterprise UI",
+    icon: "LayoutGrid",
+    items: ["Material UI", "Ag-Grid", "Data Visualization", "Real-time Applications"],
+  },
+  {
+    title: "Backend",
+    icon: "Database",
+    items: ["Node.js", "Express.js", "MongoDB", "REST APIs"],
+  },
+];
+
+export const alsoWorkedWith = [
+  "Redux Toolkit",
+  "TanStack Query",
+  "ShadCN UI",
+  "Tailwind CSS",
+  "SCSS/SASS",
+  "Jest",
+  "React Testing Library",
+  "Enzyme",
+  "Highcharts",
+  "Leaflet",
+  "OpenLayers",
+  "TanStack Table",
+  "WCAG 2.2 Accessibility",
+  "Keycloak",
+  "NextAuth",
+  "RBAC/ABAC",
+  "Docusaurus",
+  "Decap CMS",
+  "GitLab CI/CD",
+  "Docker",
+  "Figma",
+  "Agile/Scrum",
+];
+
 export const experience: ExperienceEntry[] = [
   {
     role: "Senior Software Engineer",
@@ -111,11 +213,11 @@ export const experience: ExperienceEntry[] = [
     period: "Feb 2024 — Jul 2026",
     location: "Remote",
     highlights: [
-      "Spearheaded frontend modernization initiatives for an AI-powered logistics intelligence platform, improving application scalability, consistency, and enterprise workflow usability across customer-facing modules.",
-      "Architected a scalable dual-design migration strategy enabling legacy and modern UI systems to coexist, accelerating modernization without disrupting ongoing product delivery.",
       "Reduced bundle size by 30% and improved application load performance by 35% through route-based code splitting, lazy loading, rendering optimization, memoization, and asset optimization strategies.",
       "Revamped high-volume real-time map tracking infrastructure using Leaflet clustering and rendering optimization techniques to efficiently support 10k+ live asset markers with improved rendering stability.",
+      "Architected a scalable dual-design migration strategy enabling legacy and modern UI systems to coexist, accelerating modernization without disrupting ongoing product delivery.",
       "Led migration to Next.js App Router architecture and established reusable component-driven frontend foundations using Material UI and TypeScript.",
+      "Spearheaded frontend modernization initiatives for an AI-powered logistics intelligence platform, improving application scalability, consistency, and enterprise workflow usability across customer-facing modules.",
       "Introduced frontend engineering standards including reusable architecture patterns, linting, documentation practices, scalable folder structures, and testing foundations using Jest and React Testing Library.",
       "Implemented WCAG 2.2 accessibility standards and enhanced authorization workflows using ABAC models integrated with Keycloak and NextAuth.",
       "Collaborated with backend and DevOps teams to optimize API contracts, caching strategies, CI/CD workflows, and frontend-backend integration efficiency.",
@@ -148,11 +250,11 @@ export const experience: ExperienceEntry[] = [
     period: "Sep 2021 — Jan 2024",
     location: "Hyderabad, India",
     highlights: [
-      "Led development of enterprise analytics dashboards and data visualization workflows using React.js, Redux, Ag-Grid, and Highcharts for critical business insights.",
       "Delivered POCs and production-ready scalable grid and charting solutions, improving dashboard rendering performance and user interaction efficiency.",
+      "Led development of enterprise analytics dashboards and data visualization workflows using React.js, Redux, Ag-Grid, and Highcharts for critical business insights.",
       "Built reusable component-driven frontend architecture using React.js, TypeScript, SCSS, and Material UI to enhance maintainability and consistency.",
-      "Collaborated with cross-functional teams on sprint planning, backlog refinement, estimations, and architecture discussions in Agile delivery cycles.",
       "Managed framework upgrades, dependency modernization, and third-party integrations while ensuring minimal production impact and improved stability.",
+      "Collaborated with cross-functional teams on sprint planning, backlog refinement, estimations, and architecture discussions in Agile delivery cycles.",
       "Contributed to REST API design discussions and optimized frontend-backend integration for efficient data handling.",
     ],
     stack: [
@@ -227,6 +329,72 @@ export const projects: ProjectEntry[] = [
   },
 ];
 
+/**
+ * Two deep case studies instead of a shallow project list — this is what
+ * the homepage "Work" section actually renders. `projects` above stays
+ * intact for the comprehensive /resume rendering.
+ *
+ * No screenshots or live links: the underlying products are confidential.
+ * The `visual` key selects an illustrative, generic UI mockup (built from
+ * scratch, not the real product) that demonstrates the kind of interface
+ * described rather than depicting it literally.
+ */
+export const caseStudies: CaseStudy[] = [
+  {
+    id: "dot-oracle",
+    title: "Dot Oracle",
+    org: "Dot AI",
+    tagline: "AI-powered Asset Intelligence Platform",
+    challenge:
+      "A logistics and asset-intelligence SaaS platform needed a frontend that could handle real-time IIoT data and 10K+ live map markers, while migrating off a legacy UI without disrupting active enterprise customers.",
+    role: "Frontend architecture, independent module development, and migration strategy",
+    stack: ["Next.js", "React", "TypeScript", "Material UI", "Redux Toolkit", "Leaflet", "Keycloak", "NextAuth"],
+    problems: [
+      "Real-time data at scale — 10K+ live asset markers without rendering slowdown",
+      "Legacy → modern UI migration with zero downtime for active customers",
+      "Enterprise authorization across modules (RBAC/ABAC)",
+      "A consistent design system across 17 core modules",
+    ],
+    results: [
+      { value: "13/17", label: "core modules built independently" },
+      { value: "30%", label: "smaller bundle size" },
+      { value: "35%", label: "faster load performance" },
+      { value: "10K+", label: "live markers rendered smoothly" },
+    ],
+    visual: "dashboard",
+  },
+  {
+    id: "enterprise-analytics",
+    title: "Enterprise Analytics Platform",
+    org: "Hexagon",
+    tagline: "High-density dashboards & data visualization",
+    challenge:
+      "Enterprise customers needed dense analytics dashboards — large data grids and charts covering business-critical metrics — that stayed fast and legible under real production data volumes.",
+    role: "Frontend development, POCs, and framework modernization",
+    stack: ["React", "Redux", "TypeScript", "Ag-Grid", "Highcharts", "SCSS", "Material UI"],
+    problems: [
+      "High-density grid rendering without jank",
+      "Charting large business datasets clearly",
+      "Framework and dependency upgrades with zero production impact",
+      "Cross-functional delivery in tight Agile cycles",
+    ],
+    results: [
+      { value: "Ag-Grid + Highcharts", label: "scalable grid & charting systems delivered" },
+      { value: "Zero-downtime", label: "framework & dependency upgrades" },
+    ],
+    visual: "analytics",
+  },
+];
+
+export const secondaryProjects: SecondaryProject[] = [
+  {
+    title: "Knowledge Base / Docs Portal",
+    org: "Dot AI",
+    description:
+      "Centralized, role-based documentation platform for customers and internal teams — built with Docusaurus, Decap CMS, and automated GitLab CI/CD deployment.",
+  },
+];
+
 export const achievements: AchievementEntry[] = [
   {
     title: "High-Impact Contribution Recognition",
@@ -257,9 +425,10 @@ export const education: EducationEntry = {
 
 export const navSections: NavSection[] = [
   { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
-  { id: "skills", label: "Skills" },
+  { id: "engineering", label: "Engineering" },
   { id: "projects", label: "Work" },
+  { id: "skills", label: "Skills" },
+  { id: "experience", label: "Experience" },
   { id: "achievements", label: "Achievements" },
   { id: "guestbook", label: "Guestbook" },
   { id: "contact", label: "Contact" },

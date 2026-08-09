@@ -29,6 +29,47 @@ export interface ProjectEntry {
   highlights: string[];
 }
 
+export interface ImpactStat {
+  value: string;
+  label: string;
+}
+
+export interface EngineeringPillar {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface CaseStudyResult {
+  value: string;
+  label: string;
+}
+
+export interface CaseStudy {
+  id: string;
+  title: string;
+  org: string;
+  tagline: string;
+  challenge: string;
+  role: string;
+  stack: string[];
+  problems: string[];
+  results: CaseStudyResult[];
+  visual: "dashboard" | "analytics";
+}
+
+export interface SecondaryProject {
+  title: string;
+  org: string;
+  description: string;
+}
+
+export interface HomeSkillGroup {
+  title: string;
+  icon: string;
+  items: string[];
+}
+
 export interface AchievementEntry {
   title: string;
   org: string;

@@ -3,10 +3,12 @@ import dynamic from "next/dynamic";
 
 import { About } from "@/components/sections/about";
 import { Achievements } from "@/components/sections/achievements";
+import { CaseStudies } from "@/components/sections/case-studies";
+import { Engineering } from "@/components/sections/engineering";
 import { Experience } from "@/components/sections/experience";
 import { GuestbookSection } from "@/components/sections/guestbook-section";
 import { Hero } from "@/components/sections/hero";
-import { Projects } from "@/components/sections/projects";
+import { ImpactStats } from "@/components/sections/impact-stats";
 import { Skills } from "@/components/sections/skills";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -29,10 +31,12 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <ImpactStats />
       <About />
-      <Experience />
+      <Engineering />
+      <CaseStudies />
       <Skills />
-      <Projects />
+      <Experience />
       <Achievements />
       <GuestbookSection />
       <ContactSection />

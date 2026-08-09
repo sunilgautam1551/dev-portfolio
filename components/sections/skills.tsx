@@ -1,25 +1,13 @@
-import {
-  BarChart3,
-  Boxes,
-  Code2,
-  Database,
-  FlaskConical,
-  Palette,
-  Wrench,
-  type LucideIcon,
-} from "lucide-react";
+import { Boxes, Code2, Database, LayoutGrid, type LucideIcon } from "lucide-react";
 
 import { Reveal } from "@/components/motion/reveal";
-import { skillGroups } from "@/lib/content";
+import { alsoWorkedWith, homeSkillGroups } from "@/lib/content";
 
 const icons: Record<string, LucideIcon> = {
-  "Languages & Frameworks": Code2,
-  "State & Data": Database,
-  "UI & Styling": Palette,
-  "Data Visualization": BarChart3,
-  "Testing & Quality": FlaskConical,
-  "Architecture & Performance": Boxes,
-  Tooling: Wrench,
+  Code2,
+  Boxes,
+  LayoutGrid,
+  Database,
 };
 
 export function Skills() {
@@ -32,22 +20,19 @@ export function Skills() {
           </h2>
         </Reveal>
 
-        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {skillGroups.map((group, i) => {
-            const Icon = icons[group.category] ?? Code2;
+        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {homeSkillGroups.map((group, i) => {
+            const Icon = icons[group.icon] ?? Code2;
             return (
-              <Reveal key={group.category} delay={(i % 3) * 0.06}>
+              <Reveal key={group.title} delay={(i % 4) * 0.06}>
                 <div className="border-border bg-card hover:border-primary/40 h-full rounded-xl border p-6 transition-colors">
                   <div className="bg-accent text-accent-foreground flex size-10 items-center justify-center rounded-lg">
                     <Icon className="size-5" aria-hidden="true" />
                   </div>
-                  <h3 className="font-heading mt-4 text-base font-semibold">{group.category}</h3>
-                  <ul className="mt-4 flex flex-wrap gap-2">
+                  <h3 className="font-heading mt-4 text-base font-semibold">{group.title}</h3>
+                  <ul className="mt-4 space-y-1.5">
                     {group.items.map((item) => (
-                      <li
-                        key={item}
-                        className="bg-secondary text-secondary-foreground rounded-md px-2.5 py-1 text-xs font-medium"
-                      >
+                      <li key={item} className="text-muted-foreground text-sm">
                         {item}
                       </li>
                     ))}
@@ -57,6 +42,15 @@ export function Skills() {
             );
           })}
         </div>
+
+        <Reveal delay={0.1}>
+          <div className="border-border mt-10 border-t pt-8">
+            <p className="text-muted-foreground text-sm font-medium">Also worked with</p>
+            <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+              {alsoWorkedWith.join(" · ")}
+            </p>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
