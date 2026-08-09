@@ -116,6 +116,14 @@ export function HeroGraphic() {
       aria-label="Animated diagram of connected nodes representing frontend architecture and data flow"
       className="h-full w-full"
     >
+      <defs>
+        <linearGradient id="hero-edge-gradient" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="var(--gradient-from)" />
+          <stop offset="50%" stopColor="var(--gradient-via)" />
+          <stop offset="100%" stopColor="var(--gradient-to)" />
+        </linearGradient>
+      </defs>
+
       {edges.map(([a, b]) => {
         const from = nodeById(a);
         const to = nodeById(b);
@@ -125,14 +133,20 @@ export function HeroGraphic() {
             data-edge={`${a}-${b}`}
             d={`M ${from.cx} ${from.cy} L ${to.cx} ${to.cy}`}
             fill="none"
-            stroke="var(--border)"
-            strokeWidth={1.5}
+            stroke="url(#hero-edge-gradient)"
+            strokeOpacity={0.55}
+            strokeWidth={1.75}
           />
         );
       })}
 
       {edges.slice(0, 5).map(([a, b], i) => (
-        <circle key={`packet-${a}-${b}-${i}`} data-packet r={4} fill="var(--primary)" />
+        <circle
+          key={`packet-${a}-${b}-${i}`}
+          data-packet
+          r={5}
+          fill="url(#hero-edge-gradient)"
+        />
       ))}
 
       {nodes.map((node) => (
@@ -142,9 +156,14 @@ export function HeroGraphic() {
           cx={node.cx}
           cy={node.cy}
           r={node.r}
-          fill={node.id === "hub" ? "var(--primary)" : "var(--card)"}
-          stroke="var(--primary)"
+          fill={node.id === "hub" ? "url(#hero-edge-gradient)" : "var(--card)"}
+          stroke="url(#hero-edge-gradient)"
           strokeWidth={node.id === "hub" ? 0 : 2}
+          style={
+            node.id === "hub"
+              ? { filter: "drop-shadow(0 0 18px var(--gradient-via))" }
+              : undefined
+          }
         />
       ))}
     </svg>

@@ -27,6 +27,7 @@ const textVariants = {
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const graphicRef = useRef<HTMLDivElement>(null);
+  const spotlightRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
 
   useLayoutEffect(() => {
@@ -49,13 +50,31 @@ export function Hero() {
     return () => ctx.revert();
   }, [reduced]);
 
+  function handleMouseMove(event: React.MouseEvent<HTMLElement>) {
+    if (reduced || !spotlightRef.current) return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    spotlightRef.current.style.setProperty("--x", `${event.clientX - rect.left}px`);
+    spotlightRef.current.style.setProperty("--y", `${event.clientY - rect.top}px`);
+  }
+
   return (
     <section
       id="top"
       ref={sectionRef}
+      onMouseMove={handleMouseMove}
       className="relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden pt-16"
     >
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 lg:grid-cols-[1.1fr_1fr] lg:gap-8">
+      <div
+        ref={spotlightRef}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 md:opacity-100"
+        style={{
+          background:
+            "radial-gradient(500px circle at var(--x, 50%) var(--y, 50%), color-mix(in oklch, var(--primary) 12%, transparent), transparent 70%)",
+        }}
+      />
+
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 lg:grid-cols-[1.1fr_1fr] lg:gap-8">
         <div>
           <motion.p
             custom={0}
@@ -72,9 +91,9 @@ export function Hero() {
             initial="hidden"
             animate="visible"
             variants={textVariants}
-            className="font-heading mt-4 text-4xl leading-[1.05] font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl"
+            className="font-heading mt-4 text-5xl leading-[1.02] font-bold tracking-tight text-balance sm:text-6xl lg:text-7xl"
           >
-            {identity.name}
+            <span className="text-gradient-brand">{identity.name}</span>
           </motion.h1>
 
           <motion.p
@@ -121,7 +140,7 @@ export function Hero() {
             variants={textVariants}
             className="mt-10 flex flex-wrap items-center gap-4"
           >
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="shadow-glow">
               <Link href="/#projects">
                 View Work
                 <ArrowRight className="size-4" aria-hidden="true" />
@@ -133,7 +152,11 @@ export function Hero() {
           </motion.div>
         </div>
 
-        <div ref={graphicRef} className="mx-auto aspect-square w-full max-w-md lg:max-w-none">
+        <div ref={graphicRef} className="relative mx-auto aspect-square w-full max-w-md lg:max-w-none">
+          <div
+            aria-hidden="true"
+            className="bg-gradient-brand absolute inset-[8%] -z-10 rounded-full opacity-20 blur-3xl"
+          />
           <HeroGraphic />
         </div>
       </div>

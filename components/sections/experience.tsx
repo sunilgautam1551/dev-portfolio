@@ -2,6 +2,8 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 import { Reveal } from "@/components/motion/reveal";
+import { Button } from "@/components/ui/button";
+import { GlowCard } from "@/components/ui/glow-card";
 import { experience } from "@/lib/content";
 
 const HOME_HIGHLIGHT_COUNT = 3;
@@ -15,42 +17,51 @@ export function Experience() {
             <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
               Experience
             </h2>
-            <Link
-              href="/resume"
-              className="text-primary hover:text-primary/80 focus-visible:outline-ring inline-flex items-center gap-1 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
-            >
-              Full resume
-              <ArrowUpRight className="size-4" aria-hidden="true" />
-            </Link>
+            <Button asChild variant="outline" size="sm">
+              <Link href="/resume">
+                Full resume
+                <ArrowUpRight className="size-4" aria-hidden="true" />
+              </Link>
+            </Button>
           </div>
         </Reveal>
 
-        <ol className="border-border relative mt-16 space-y-16 border-l pl-8 sm:pl-10">
-          {experience.map((entry, i) => (
-            <Reveal as="li" key={entry.company} delay={i * 0.08} className="relative">
-              <span
-                className="bg-primary ring-background absolute top-1.5 -left-[calc(2rem+5px)] size-2.5 rounded-full ring-4 sm:-left-[calc(2.5rem+5px)]"
-                aria-hidden="true"
-              />
-              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                <h3 className="font-heading text-xl font-semibold">
-                  {entry.role} · {entry.company}
-                </h3>
-                <p className="text-muted-foreground font-mono text-sm">{entry.period}</p>
-              </div>
-              <p className="text-muted-foreground mt-1 text-sm">{entry.location}</p>
+        <div className="mt-12 space-y-6">
+          {experience.map((entry, i) => {
+            const [lead, ...supporting] = entry.highlights.slice(0, HOME_HIGHLIGHT_COUNT);
+            return (
+              <Reveal key={entry.company} delay={i * 0.08}>
+                <GlowCard>
+                  <div className="flex flex-wrap items-start justify-between gap-x-6 gap-y-2">
+                    <div>
+                      <h3 className="font-heading text-xl font-semibold sm:text-2xl">
+                        {entry.company}
+                      </h3>
+                      <p className="text-muted-foreground mt-1 text-sm">
+                        {entry.role} · {entry.location}
+                      </p>
+                    </div>
+                    <span className="bg-secondary text-secondary-foreground shrink-0 rounded-full px-3 py-1 font-mono text-xs font-medium">
+                      {entry.period}
+                    </span>
+                  </div>
 
-              <ul className="mt-5 space-y-3">
-                {entry.highlights.slice(0, HOME_HIGHLIGHT_COUNT).map((highlight) => (
-                  <li key={highlight} className="flex gap-3 text-base leading-relaxed">
-                    <span className="text-primary mt-2.5 size-1 shrink-0 rounded-full bg-current" />
-                    <span>{highlight}</span>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          ))}
-        </ol>
+                  {lead && (
+                    <p className="border-primary/40 mt-6 border-l-2 pl-4 text-base leading-relaxed text-balance sm:text-lg">
+                      {lead}
+                    </p>
+                  )}
+
+                  {supporting.length > 0 && (
+                    <p className="text-muted-foreground mt-4 pl-4.5 text-sm leading-relaxed">
+                      {supporting.join("  ·  ")}
+                    </p>
+                  )}
+                </GlowCard>
+              </Reveal>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

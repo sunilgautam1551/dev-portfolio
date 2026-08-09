@@ -63,6 +63,14 @@
   --input: rgb(15 15 20 / 14%);
   --ring: #4f46e5;
   --radius: 0.75rem;
+
+  /* Signature brand gradient — indigo → violet → cyan. Stops chosen to clear
+     3:1 large-text contrast against this theme's background (see README). */
+  --gradient-from: #4338ca;
+  --gradient-via: #6d28d9;
+  --gradient-to: #0e7490;
+  --glow-primary: 0 0 0 transparent;
+  --glow-card: 0 12px 32px -12px rgb(15 15 20 / 12%);
 }
 
 .dark {
@@ -85,6 +93,12 @@
   --border: rgb(255 255 255 / 10%);
   --input: rgb(255 255 255 / 14%);
   --ring: #818cf8;
+
+  --gradient-from: #6366f1;
+  --gradient-via: #a78bfa;
+  --gradient-to: #67e8f9;
+  --glow-primary: 0 0 32px -6px rgb(99 102 241 / 55%);
+  --glow-card: 0 16px 40px -12px rgb(0 0 0 / 45%);
 }
 
 @layer base {
@@ -106,6 +120,65 @@
   :focus-visible {
     @apply outline-ring outline-2 outline-offset-2;
   }
+}
+
+@utility text-gradient-brand {
+  background-image: linear-gradient(
+    135deg,
+    var(--gradient-from),
+    var(--gradient-via),
+    var(--gradient-to)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility bg-gradient-brand {
+  background-image: linear-gradient(
+    135deg,
+    var(--gradient-from),
+    var(--gradient-via),
+    var(--gradient-to)
+  );
+}
+
+@utility shadow-glow {
+  box-shadow: var(--glow-primary);
+}
+
+@utility shadow-elevated {
+  box-shadow: var(--glow-card);
+}
+
+@utility animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+@utility animate-marquee-reverse {
+  animation: marquee-reverse 32s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@utility bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 @media (prefers-reduced-motion: reduce) {

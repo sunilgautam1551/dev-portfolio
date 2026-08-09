@@ -1,6 +1,7 @@
 import { Boxes, Gauge, LayoutGrid, ShieldCheck, type LucideIcon } from "lucide-react";
 
 import { Reveal } from "@/components/motion/reveal";
+import { GlowCard } from "@/components/ui/glow-card";
 import { engineeringPillars } from "@/lib/content";
 
 const icons: Record<string, LucideIcon> = {
@@ -23,20 +24,23 @@ export function Engineering() {
           </p>
         </Reveal>
 
-        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {engineeringPillars.map((pillar, i) => {
             const Icon = icons[pillar.icon] ?? Boxes;
             return (
-              <Reveal key={pillar.title} delay={(i % 2) * 0.08}>
-                <div className="border-border bg-card hover:border-primary/40 h-full rounded-xl border p-6 transition-colors">
-                  <div className="bg-accent text-accent-foreground flex size-10 items-center justify-center rounded-lg">
-                    <Icon className="size-5" aria-hidden="true" />
+              <Reveal key={pillar.title} delay={(i % 4) * 0.06}>
+                <GlowCard className="flex flex-col">
+                  <span className="text-primary font-mono text-xs font-medium">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="bg-accent text-accent-foreground ring-border mt-4 flex size-12 items-center justify-center rounded-xl ring-1 transition-transform duration-300 group-hover:scale-110">
+                    <Icon className="size-6" aria-hidden="true" />
                   </div>
-                  <h3 className="font-heading mt-4 text-base font-semibold">{pillar.title}</h3>
-                  <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+                  <h3 className="font-heading mt-5 text-lg font-semibold">{pillar.title}</h3>
+                  <p className="text-muted-foreground mt-2.5 text-sm leading-relaxed">
                     {pillar.description}
                   </p>
-                </div>
+                </GlowCard>
               </Reveal>
             );
           })}

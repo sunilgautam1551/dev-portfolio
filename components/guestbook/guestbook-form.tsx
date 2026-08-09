@@ -54,7 +54,11 @@ export function GuestbookForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      noValidate
+      className="border-border bg-card shadow-elevated space-y-5 rounded-2xl border p-6 sm:p-8"
+    >
       <div className="space-y-2">
         <Label htmlFor="guestbook-name">Name</Label>
         <Input
@@ -99,7 +103,7 @@ export function GuestbookForm() {
         }}
       />
 
-      <Button type="submit" disabled={submitting}>
+      <Button type="submit" size="lg" disabled={submitting} className="w-full">
         {submitting ? (
           <>
             <Loader2 className="size-4 animate-spin" aria-hidden="true" />

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque, Inter, JetBrains_Mono } from "next/font/google";
 
 import { CommandPaletteLoader } from "@/components/command-palette/command-palette-loader";
+import { AmbientBackground } from "@/components/layout/ambient-background";
 import { Footer } from "@/components/layout/footer";
 import { Nav } from "@/components/layout/nav";
 import { SkipLink } from "@/components/layout/skip-link";
@@ -97,6 +98,7 @@ export default function RootLayout({
         />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <TooltipProvider delayDuration={200}>
+            <AmbientBackground />
             <SmoothScrollProvider>
               <SkipLink />
               <Nav />

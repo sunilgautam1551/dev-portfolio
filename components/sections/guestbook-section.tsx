@@ -8,7 +8,7 @@ import { isRedisConfigured } from "@/lib/redis";
 
 const GuestbookForm = dynamic(
   () => import("@/components/guestbook/guestbook-form").then((m) => m.GuestbookForm),
-  { loading: () => <Skeleton className="h-56 w-full" /> },
+  { loading: () => <Skeleton className="h-80 w-full rounded-2xl" /> },
 );
 
 export async function GuestbookSection() {

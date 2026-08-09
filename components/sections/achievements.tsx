@@ -1,6 +1,7 @@
 import { Award, Sparkles, Star, type LucideIcon } from "lucide-react";
 
 import { Reveal } from "@/components/motion/reveal";
+import { GlowCard } from "@/components/ui/glow-card";
 import { achievements } from "@/lib/content";
 
 const icons: LucideIcon[] = [Award, Star, Sparkles];
@@ -20,8 +21,8 @@ export function Achievements() {
             const Icon = icons[i % icons.length]!;
             return (
               <Reveal key={achievement.title} delay={i * 0.08}>
-                <div className="border-border bg-card h-full rounded-xl border p-6 text-center sm:text-left">
-                  <div className="bg-accent text-accent-foreground mx-auto flex size-12 items-center justify-center rounded-full sm:mx-0">
+                <GlowCard className="text-center sm:text-left">
+                  <div className="bg-accent text-accent-foreground mx-auto flex size-12 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110 sm:mx-0">
                     <Icon className="size-5" aria-hidden="true" />
                   </div>
                   <h3 className="font-heading mt-4 text-base font-semibold text-balance">
@@ -33,7 +34,7 @@ export function Achievements() {
                   <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
                     {achievement.description}
                   </p>
-                </div>
+                </GlowCard>
               </Reveal>
             );
           })}

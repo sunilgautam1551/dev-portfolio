@@ -80,15 +80,24 @@ export function ContactSection() {
             </p>
             <a
               href={`mailto:${identity.email}`}
-              className="text-foreground hover:text-primary focus-visible:outline-ring mt-6 inline-flex items-center gap-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
+              className="border-border bg-card hover:border-primary/40 focus-visible:outline-ring mt-8 inline-flex items-center gap-3 rounded-xl border p-4 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
             >
-              <Mail className="size-4" aria-hidden="true" />
-              {identity.email}
+              <span className="bg-accent text-accent-foreground flex size-10 shrink-0 items-center justify-center rounded-lg">
+                <Mail className="size-5" aria-hidden="true" />
+              </span>
+              <span>
+                <span className="text-muted-foreground block text-xs">Email me directly</span>
+                <span className="text-foreground">{identity.email}</span>
+              </span>
             </a>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-6">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              noValidate
+              className="border-border bg-card shadow-elevated space-y-6 rounded-2xl border p-6 sm:p-8"
+            >
               <div className="grid gap-6 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="name">Name</Label>
@@ -179,7 +188,7 @@ export function ContactSection() {
                 }}
               />
 
-              <Button type="submit" size="lg" disabled={submitting} className="w-full sm:w-auto">
+              <Button type="submit" size="lg" disabled={submitting} className="w-full">
                 {submitting ? (
                   <>
                     <Loader2 className="size-4 animate-spin" aria-hidden="true" />

@@ -17,7 +17,7 @@ const ContactSection = dynamic(
   {
     loading: () => (
       <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
-        <Skeleton className="h-72 w-full" />
+        <Skeleton className="h-96 w-full rounded-2xl" />
       </div>
     ),
   },
