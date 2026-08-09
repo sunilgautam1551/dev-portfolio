@@ -51,7 +51,7 @@ export function CaseStudies() {
                   </div>
 
                   <div className={i % 2 === 1 ? "lg:order-1" : ""}>
-                    <span className="text-primary font-mono text-sm">
+                    <span className="text-accent-foreground font-mono text-sm">
                       {String(i + 1).padStart(2, "0")} · {study.org}
                     </span>
                     <h3 className="font-heading mt-2 text-2xl font-semibold text-balance sm:text-3xl">

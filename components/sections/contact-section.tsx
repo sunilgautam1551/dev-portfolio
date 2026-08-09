@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, Mail, Send } from "lucide-react";
 import { useRef, useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 import { Reveal } from "@/components/motion/reveal";
@@ -35,15 +35,12 @@ export function ContactSection() {
     register,
     handleSubmit,
     reset,
-    setValue,
-    watch,
+    control,
     formState: { errors },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: { name: "", email: "", reason: undefined, message: "", company: "" },
   });
-
-  const reason = watch("reason");
 
   async function onSubmit(values: ContactFormValues) {
     setSubmitting(true);
@@ -139,29 +136,41 @@ export function ContactSection() {
 
               <div className="space-y-2">
                 <Label htmlFor="reason">Reason</Label>
-                <Select
-                  value={reason}
-                  onValueChange={(value) =>
-                    setValue("reason", value as ContactFormValues["reason"], {
-                      shouldValidate: true,
-                    })
-                  }
-                >
-                  <SelectTrigger
-                    id="reason"
-                    className="w-full"
-                    aria-invalid={Boolean(errors.reason)}
-                  >
-                    <SelectValue placeholder="Select a reason" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {Object.entries(contactReasonLabels).map(([value, label]) => (
-                      <SelectItem key={value} value={value}>
-                        {label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <Controller
+                  name="reason"
+                  control={control}
+                  render={({ field }) => (
+                    <Select
+                      value={field.value ?? ""}
+                      onValueChange={(v) => {
+                        // Radix fires onValueChange("") as a side effect when the
+                        // controlled value is programmatically cleared (e.g. by
+                        // form.reset() after a successful submit) — no real
+                        // SelectItem ever has an empty value, so this can only be
+                        // that artifact, never an actual user selection. Forwarding
+                        // it to RHF would re-run validation and resurrect the
+                        // "select a reason" error right after a clean reset.
+                        if (v) field.onChange(v);
+                      }}
+                    >
+                      <SelectTrigger
+                        id="reason"
+                        className="w-full"
+                        aria-invalid={Boolean(errors.reason)}
+                        onBlur={field.onBlur}
+                      >
+                        <SelectValue placeholder="Select a reason" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {Object.entries(contactReasonLabels).map(([value, label]) => (
+                          <SelectItem key={value} value={value}>
+                            {label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
                 {errors.reason && (
                   <p role="alert" className="text-destructive text-sm">
                     {errors.reason.message}

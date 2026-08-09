@@ -81,7 +81,7 @@ export function Hero() {
             initial="hidden"
             animate="visible"
             variants={textVariants}
-            className="text-primary font-mono text-sm font-medium tracking-wide"
+            className="text-accent-foreground font-mono text-sm font-medium tracking-wide"
           >
             {identity.title} · {identity.location}
           </motion.p>

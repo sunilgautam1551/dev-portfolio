@@ -30,7 +30,7 @@ export function Engineering() {
             return (
               <Reveal key={pillar.title} delay={(i % 4) * 0.06}>
                 <GlowCard className="flex flex-col">
-                  <span className="text-primary font-mono text-xs font-medium">
+                  <span className="text-accent-foreground font-mono text-xs font-medium">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div className="bg-accent text-accent-foreground ring-border mt-4 flex size-12 items-center justify-center rounded-xl ring-1 transition-transform duration-300 group-hover:scale-110">

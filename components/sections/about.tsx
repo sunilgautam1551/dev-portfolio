@@ -4,7 +4,7 @@ import { Reveal } from "@/components/motion/reveal";
 import { experience, identity, summary } from "@/lib/content";
 
 const quickFacts: { label: string; value: string; icon: LucideIcon }[] = [
-  { label: "Experience", value: "6+ years", icon: Clock },
+  { label: "Experience", value: "6 years", icon: Clock },
   { label: "Focus", value: "Frontend architecture & design systems", icon: Target },
   {
     label: "Most recently",

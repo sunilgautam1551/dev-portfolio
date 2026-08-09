@@ -24,7 +24,7 @@ export function Skills() {
         <Reveal>
           <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">Skills</h2>
           <p className="text-muted-foreground mt-4 max-w-xl text-base leading-relaxed">
-            The stack I reach for daily, and everything else I&apos;ve shipped with along the way.
+            Tools I use every day, plus everything else I&apos;ve worked with over the years.
           </p>
         </Reveal>
 
@@ -37,8 +37,8 @@ export function Skills() {
                   className="bg-primary/10 pointer-events-none absolute -top-20 -right-20 size-64 rounded-full blur-3xl"
                 />
                 <div className="relative flex items-center gap-2">
-                  <Sparkles className="text-primary size-4" aria-hidden="true" />
-                  <span className="text-primary font-mono text-xs font-medium tracking-wide uppercase">
+                  <Sparkles className="text-accent-foreground size-4" aria-hidden="true" />
+                  <span className="text-accent-foreground font-mono text-xs font-medium tracking-wide uppercase">
                     Daily driver
                   </span>
                 </div>

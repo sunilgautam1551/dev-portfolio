@@ -29,14 +29,14 @@ export const tagline =
 export const heroTechTags = ["React", "TypeScript", "Next.js", "Frontend Architecture"];
 
 export const heroStats = [
-  "6+ Years",
+  "6 Years",
   "Enterprise SaaS",
   "Real-Time Systems",
   "Data-Intensive Interfaces",
   "Performance & Architecture",
 ];
 
-export const summary = `I'm a Senior Frontend Engineer with 6+ years of experience building scalable, high-performance SaaS and enterprise web applications using React.js, Next.js, TypeScript, and modern frontend architectures. My expertise spans frontend architecture, design systems, performance optimization, accessibility (WCAG 2.2), and enterprise-grade UI engineering. I have a proven track record of leading frontend initiatives, mentoring developers, and delivering scalable platforms with real-time workflows and high-volume data visualization.`;
+export const summary = `I'm a Senior Frontend Engineer with 6 years of experience building scalable, high-performance SaaS and enterprise web applications using React.js, Next.js, TypeScript, and modern frontend architectures. My expertise spans frontend architecture, design systems, performance optimization, accessibility (WCAG 2.2), and enterprise-grade UI engineering. I have a proven track record of leading frontend initiatives, mentoring developers, and delivering scalable platforms with real-time workflows and high-volume data visualization.`;
 
 export const engineeringPillars: EngineeringPillar[] = [
   {
@@ -364,15 +364,19 @@ export const caseStudies: CaseStudy[] = [
       "A logistics and asset-intelligence SaaS platform needed a frontend that could handle real-time IIoT data and 10K+ live map markers, while migrating off a legacy UI without disrupting active enterprise customers.",
     role: "Frontend architecture, independent module development, technical mentorship, and migration strategy",
     stack: [
-      "Next.js",
-      "React",
+      "Next.Js",
+      "React.Js",
       "TypeScript",
+      "JavaScript",
       "Material UI",
       "Redux Toolkit",
       "Leaflet",
       "Keycloak",
-      "Okta",
       "NextAuth",
+      "TanStack Query",
+      "Material React Table",
+      "React Testing Library",
+      "Jest"
     ],
     problems: [
       "Real-time data at scale — 10K+ live asset markers without rendering slowdown",
@@ -433,7 +437,7 @@ export const achievements: AchievementEntry[] = [
     title: '"Pat on the Back" Award (x2)',
     org: "Hexagon",
     description:
-      "Awarded twice for consistently delivering exceptional results and demonstrating outstanding performance.",
+      "Recognized for successfully delivering critical features on time, demonstrating strong ownership, execution, and a consistent focus on meeting key delivery commitments.",
   },
   {
     title: "Zero-Downtime Platform Migration",

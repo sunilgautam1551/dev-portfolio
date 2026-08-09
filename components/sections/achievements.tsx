@@ -29,7 +29,7 @@ export function Achievements() {
                   <h3 className="font-heading mt-4 text-base font-semibold text-balance">
                     {achievement.title}
                   </h3>
-                  <p className="text-primary mt-1 text-xs font-medium tracking-wide uppercase">
+                  <p className="text-accent-foreground mt-1 text-xs font-medium tracking-wide uppercase">
                     {achievement.org}
                   </p>
                   <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
