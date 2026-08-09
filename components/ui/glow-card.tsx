@@ -12,7 +12,7 @@ export function GlowCard({ children, className }: { children: ReactNode; classNa
     <div
       className={cn(
         "border-border bg-card group relative h-full rounded-xl border p-6 transition-all duration-300",
-        "hover:border-primary/40 hover:-translate-y-1 hover:shadow-glow",
+        "hover:border-primary/40 hover:shadow-glow hover:-translate-y-1",
         className,
       )}
     >

@@ -4,14 +4,7 @@ import Link from "next/link";
 
 import { LinkedinIcon } from "@/components/icons/linkedin-icon";
 import { Button } from "@/components/ui/button";
-import {
-  education,
-  experience,
-  identity,
-  projects,
-  skillGroups,
-  summary,
-} from "@/lib/content";
+import { education, experience, identity, projects, skillGroups, summary } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Resume",

@@ -1,10 +1,11 @@
-import { Award, Sparkles, Star, type LucideIcon } from "lucide-react";
+import { Award, GitBranch, Sparkles, Star, Users, type LucideIcon } from "lucide-react";
 
 import { Reveal } from "@/components/motion/reveal";
 import { GlowCard } from "@/components/ui/glow-card";
 import { achievements } from "@/lib/content";
 
-const icons: LucideIcon[] = [Award, Star, Sparkles];
+// Positional, matched to the order in lib/content.ts — not a cycling fallback.
+const icons: LucideIcon[] = [Award, GitBranch, Users, Star, Sparkles];
 
 export function Achievements() {
   return (
@@ -16,9 +17,9 @@ export function Achievements() {
           </h2>
         </Reveal>
 
-        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {achievements.map((achievement, i) => {
-            const Icon = icons[i % icons.length]!;
+            const Icon = icons[i] ?? Award;
             return (
               <Reveal key={achievement.title} delay={i * 0.08}>
                 <GlowCard className="text-center sm:text-left">

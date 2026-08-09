@@ -21,7 +21,11 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { identity } from "@/lib/content";
-import { contactFormSchema, contactReasonLabels, type ContactFormValues } from "@/lib/validations/contact";
+import {
+  contactFormSchema,
+  contactReasonLabels,
+  type ContactFormValues,
+} from "@/lib/validations/contact";
 
 export function ContactSection() {
   const [submitting, setSubmitting] = useState(false);
@@ -143,7 +147,11 @@ export function ContactSection() {
                     })
                   }
                 >
-                  <SelectTrigger id="reason" className="w-full" aria-invalid={Boolean(errors.reason)}>
+                  <SelectTrigger
+                    id="reason"
+                    className="w-full"
+                    aria-invalid={Boolean(errors.reason)}
+                  >
                     <SelectValue placeholder="Select a reason" />
                   </SelectTrigger>
                   <SelectContent>

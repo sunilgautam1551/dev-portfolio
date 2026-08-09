@@ -87,7 +87,9 @@ export function Nav() {
                 <Link
                   href={`/#${section.id}`}
                   className={`focus-visible:outline-ring relative z-10 block rounded-md px-3.5 py-2.5 text-[0.95rem] font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 ${
-                    isActive ? "text-accent-foreground" : "text-muted-foreground hover:text-foreground"
+                    isActive
+                      ? "text-accent-foreground"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {section.label}

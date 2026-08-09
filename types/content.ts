@@ -6,6 +6,7 @@ export interface Identity {
   phone: string;
   linkedin: string;
   linkedinHandle: string;
+  github: string;
 }
 
 export interface SkillGroup {
@@ -55,7 +56,7 @@ export interface CaseStudy {
   stack: string[];
   problems: string[];
   results: CaseStudyResult[];
-  visual: "dashboard" | "analytics";
+  visual: "dashboard" | "analytics" | "docs";
 }
 
 export interface SecondaryProject {

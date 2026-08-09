@@ -141,12 +141,7 @@ export function HeroGraphic() {
       })}
 
       {edges.slice(0, 5).map(([a, b], i) => (
-        <circle
-          key={`packet-${a}-${b}-${i}`}
-          data-packet
-          r={5}
-          fill="url(#hero-edge-gradient)"
-        />
+        <circle key={`packet-${a}-${b}-${i}`} data-packet r={5} fill="url(#hero-edge-gradient)" />
       ))}
 
       {nodes.map((node) => (
@@ -160,9 +155,7 @@ export function HeroGraphic() {
           stroke="url(#hero-edge-gradient)"
           strokeWidth={node.id === "hub" ? 0 : 2}
           style={
-            node.id === "hub"
-              ? { filter: "drop-shadow(0 0 18px var(--gradient-via))" }
-              : undefined
+            node.id === "hub" ? { filter: "drop-shadow(0 0 18px var(--gradient-via))" } : undefined
           }
         />
       ))}

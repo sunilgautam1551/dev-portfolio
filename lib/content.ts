@@ -21,21 +21,23 @@ export const identity: Identity = {
   phone: "+91 8837877083",
   linkedin: "https://linkedin.com/in/sunil-gautam-308937170",
   linkedinHandle: "linkedin.com/in/sunil-gautam-308937170",
+  github: "https://github.com/sunilgautam1551",
 };
 
 export const tagline =
-  "I architect and build scalable React applications for complex enterprise workflows — from frontend architecture and design systems to performance and production.";
+  "I architect and build scalable frontend systems that power complex products, with a focus on performance, maintainability, and exceptional user experiences.";
 
 export const heroTechTags = ["React", "TypeScript", "Next.js", "Frontend Architecture"];
 
 export const heroStats = [
   "6+ Years",
   "Enterprise SaaS",
-  "Real-time Applications",
-  "High-Density Data UI",
+  "Real-Time Systems",
+  "Data-Intensive Interfaces",
+  "Performance & Architecture",
 ];
 
-export const summary = `I'm a Senior Frontend Engineer with 6+ years of experience building scalable, high-performance SaaS and enterprise web applications using React.js, Next.js, TypeScript, and modern frontend architectures. My expertise spans frontend architecture, design systems, performance optimization, accessibility (WCAG 2.2), and enterprise-grade UI engineering. I have a proven track record of leading frontend initiatives, mentoring developers, and delivering scalable platforms with real-time workflows and high-volume data visualization — collaborating closely with product, backend, and DevOps teams to ship maintainable, customer-focused solutions in Agile environments.`;
+export const summary = `I'm a Senior Frontend Engineer with 6+ years of experience building scalable, high-performance SaaS and enterprise web applications using React.js, Next.js, TypeScript, and modern frontend architectures. My expertise spans frontend architecture, design systems, performance optimization, accessibility (WCAG 2.2), and enterprise-grade UI engineering. I have a proven track record of leading frontend initiatives, mentoring developers, and delivering scalable platforms with real-time workflows and high-volume data visualization.`;
 
 export const impactStats: ImpactStat[] = [
   { value: "30%", label: "Bundle Size Reduction" },
@@ -48,25 +50,25 @@ export const engineeringPillars: EngineeringPillar[] = [
   {
     title: "Frontend Architecture",
     description:
-      "Component-driven React + Next.js App Router architecture, shared design systems, and micro-frontend strategies for large product surfaces.",
+      "Component-driven React + Next.js App Router foundations and shared design systems — built so legacy and modern UI can coexist mid-migration, not just greenfield builds. Micro-frontend strategies keep large product surfaces independently shippable.",
     icon: "Boxes",
   },
   {
     title: "Performance",
     description:
-      "Route-based code splitting, lazy loading, memoization, and asset optimization — the playbook behind a 30% smaller bundle and 35% faster loads.",
+      "Profile first, then fix what's actually slow: route-based code splitting, lazy loading, memoization, virtualization for high-traffic workflows, and asset optimization — trimmed until the render path and bundle graph are measurably leaner.",
     icon: "Gauge",
   },
   {
     title: "Enterprise UI & Data",
     description:
-      "High-density dashboards, real-time maps, and large data grids built with Ag-Grid, Highcharts, and Leaflet — tuned to stay smooth at scale.",
+      "High-density dashboards, real-time asset-tracking maps, and large data grids built with Ag-Grid, Highcharts, and Leaflet — with marker clustering and rendering optimizations so thousands of live data points stay smooth and legible.",
     icon: "LayoutGrid",
   },
   {
     title: "Security & Auth",
     description:
-      "Enterprise-grade authorization with Keycloak, NextAuth, and RBAC/ABAC access-control models.",
+      "Enterprise-grade authentication and authorization with Keycloak, Okta, and NextAuth — modeling fine-grained RBAC/ABAC access control so every role sees exactly the modules it should, nothing more.",
     icon: "ShieldCheck",
   },
 ];
@@ -129,7 +131,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     category: "Auth & Integration",
-    items: ["Keycloak", "NextAuth", "Docusaurus", "Decap CMS"],
+    items: ["Keycloak", "Okta", "NextAuth", "Docusaurus", "Decap CMS"],
   },
   {
     category: "Tools & Workflow",
@@ -162,40 +164,59 @@ export const homeSkillGroups: HomeSkillGroup[] = [
   {
     title: "Core",
     icon: "Code2",
-    items: ["React", "TypeScript", "JavaScript (ES6+)", "Next.js"],
+    items: [
+      "React",
+      "TypeScript",
+      "JavaScript (ES6+)",
+      "Next.js",
+      "React Testing Library",
+      "Jest",
+      "Redux/Toolkit",
+    ],
   },
   {
     title: "Architecture",
     icon: "Boxes",
-    items: ["Frontend Architecture", "Design Systems", "Micro-Frontends", "Performance"],
+    items: [
+      "Frontend Architecture",
+      "Design Systems",
+      "Component-Driven Development",
+      "Micro-Frontends",
+    ],
   },
   {
     title: "Enterprise UI",
     icon: "LayoutGrid",
-    items: ["Material UI", "Ag-Grid", "Data Visualization", "Real-time Applications"],
+    items: [
+      "Material UI",
+      "Ag-Grid",
+      "Highcharts",
+      "Leaflet",
+      "ShadCN UI",
+      "Tailwind CSS",
+      "SCSS/SASS",
+    ],
   },
   {
     title: "Backend",
     icon: "Database",
-    items: ["Node.js", "Express.js", "MongoDB", "REST APIs"],
+    items: ["Node.js", "Express.js", "MongoDB", "REST APIs", "Prisma", "GraphQL"],
   },
 ];
 
 export const alsoWorkedWith = [
   "Redux Toolkit",
   "TanStack Query",
-  "ShadCN UI",
-  "Tailwind CSS",
-  "SCSS/SASS",
+  "Material React Table",
   "Jest",
+  "Prisma",
   "React Testing Library",
   "Enzyme",
-  "Highcharts",
-  "Leaflet",
   "OpenLayers",
   "TanStack Table",
   "WCAG 2.2 Accessibility",
   "Keycloak",
+  "Okta",
   "NextAuth",
   "RBAC/ABAC",
   "Docusaurus",
@@ -219,7 +240,7 @@ export const experience: ExperienceEntry[] = [
       "Led migration to Next.js App Router architecture and established reusable component-driven frontend foundations using Material UI and TypeScript.",
       "Spearheaded frontend modernization initiatives for an AI-powered logistics intelligence platform, improving application scalability, consistency, and enterprise workflow usability across customer-facing modules.",
       "Introduced frontend engineering standards including reusable architecture patterns, linting, documentation practices, scalable folder structures, and testing foundations using Jest and React Testing Library.",
-      "Implemented WCAG 2.2 accessibility standards and enhanced authorization workflows using ABAC models integrated with Keycloak and NextAuth.",
+      "Implemented WCAG 2.2 accessibility standards and enhanced authorization workflows using ABAC models integrated with Keycloak, Okta, and NextAuth.",
       "Collaborated with backend and DevOps teams to optimize API contracts, caching strategies, CI/CD workflows, and frontend-backend integration efficiency.",
       "Actively contributed to sprint planning, technical estimations, architecture discussions, and pull request reviews while mentoring developers on React architecture and frontend performance best practices.",
     ],
@@ -235,6 +256,7 @@ export const experience: ExperienceEntry[] = [
       "Jest",
       "React Testing Library",
       "Keycloak",
+      "Okta",
       "Leaflet",
       "Material React Table",
       "TanStack Query",
@@ -310,10 +332,11 @@ export const projects: ProjectEntry[] = [
       "Independently developed 13 of 17 core enterprise modules for a real-time AI-powered logistics and asset intelligence platform.",
       "Led a phased frontend transformation strategy enabling legacy and redesigned applications to coexist using Next.js hybrid routing, ensuring smooth migration, zero-downtime rollout, and seamless user transition.",
       "Rebuilt the new application from scratch by redesigning and developing core business modules with a scalable component-driven architecture, improving maintainability and UI consistency.",
-      "Implemented secure enterprise authorization workflows using Keycloak, NextAuth, RBAC, and ABAC-based access control models.",
+      "Implemented secure enterprise authorization workflows using Keycloak, Okta, NextAuth, RBAC, and ABAC-based access control models.",
       "Led frontend modernization initiatives including Next.js 14 migration, Material UI v5 upgrades, reusable design system foundations, and scalable shared component architecture.",
       "Introduced frontend testing practices along with performance optimizations including API caching, lazy loading, and virtualization for high-traffic workflows.",
       "Collaborated with product, backend, DevOps, and design teams to deliver scalable SaaS platform capabilities in Agile environments.",
+      "Owned technical estimation, architecture reviews, and pull request reviews as the senior frontend voice on the team, while mentoring engineers on React architecture and performance best practices.",
     ],
   },
   {
@@ -347,13 +370,25 @@ export const caseStudies: CaseStudy[] = [
     tagline: "AI-powered Asset Intelligence Platform",
     challenge:
       "A logistics and asset-intelligence SaaS platform needed a frontend that could handle real-time IIoT data and 10K+ live map markers, while migrating off a legacy UI without disrupting active enterprise customers.",
-    role: "Frontend architecture, independent module development, and migration strategy",
-    stack: ["Next.js", "React", "TypeScript", "Material UI", "Redux Toolkit", "Leaflet", "Keycloak", "NextAuth"],
+    role: "Frontend architecture, independent module development, technical mentorship, and migration strategy",
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Material UI",
+      "Redux Toolkit",
+      "Leaflet",
+      "Keycloak",
+      "Okta",
+      "NextAuth",
+    ],
     problems: [
       "Real-time data at scale — 10K+ live asset markers without rendering slowdown",
       "Legacy → modern UI migration with zero downtime for active customers",
-      "Enterprise authorization across modules (RBAC/ABAC)",
+      "Enterprise authorization across modules (Keycloak, Okta, RBAC/ABAC)",
       "A consistent design system across 17 core modules",
+      "Owning technical estimation and architecture reviews as the senior frontend voice on the team",
+      "Mentoring engineers on React architecture and performance best practices",
     ],
     results: [
       { value: "13/17", label: "core modules built independently" },
@@ -364,49 +399,36 @@ export const caseStudies: CaseStudy[] = [
     visual: "dashboard",
   },
   {
-    id: "enterprise-analytics",
-    title: "Enterprise Analytics Platform",
-    org: "Hexagon",
-    tagline: "High-density dashboards & data visualization",
+    id: "docs-portal",
+    title: "Knowledge Base / Docs Portal",
+    org: "Dot AI",
+    tagline: "Centralized documentation platform for customers & internal teams",
     challenge:
-      "Hexagon's enterprise customers relied on dense analytics dashboards — large data grids and charts covering business-critical metrics, backed by a Neo4j graph database and .NET Core services — that had to stay fast and legible under real production data volumes, through two and a half years of continuous feature growth.",
-    role: "Frontend development, dashboard architecture, and framework modernization",
-    stack: [
-      "React",
-      "Redux",
-      "TypeScript",
-      "Ag-Grid",
-      "Highcharts",
-      "SCSS",
-      "Material UI",
-      "Neo4j",
-      ".NET Core",
-    ],
+      "Technical documentation for customers and internal teams lived across scattered, inconsistent formats. The platform needed a single, role-based home where engineers could write in Markdown while non-technical teammates could still edit and publish content confidently — without waiting on a developer for every change.",
+    role: "Frontend architecture, CMS integration, and deployment pipeline",
+    stack: ["Docusaurus", "React", "Decap CMS", "GitLab CI/CD", "Markdown", "RBAC"],
     problems: [
-      "High-density grid rendering without jank, even on large datasets",
-      "Charting business-critical metrics clearly at a glance",
-      "Cross-stack integration against a Neo4j graph database and .NET Core services",
-      "Framework and dependency upgrades with zero production impact",
-      "Cross-functional delivery in tight Agile cycles",
+      "Centralizing scattered technical docs into one consistent, searchable platform",
+      "Giving non-technical teammates a safe, guided way to edit and publish content",
+      "Separating customer-facing documentation from internal-only content by role",
+      "Keeping every deployed version in sync with source control, automatically",
     ],
     results: [
-      { value: "2+ Years", label: "leading enterprise analytics dashboards" },
-      { value: "Ag-Grid + Highcharts", label: "production-grade grid & charting systems" },
-      { value: "Neo4j · .NET Core", label: "cross-stack data integration" },
-      { value: "Zero-downtime", label: "framework & dependency upgrades" },
+      { value: "Docusaurus + React", label: "unified documentation platform" },
+      { value: "Decap CMS", label: "non-technical content editing enabled" },
+      { value: "Role-based access", label: "customer vs. internal doc separation" },
+      { value: "GitLab CI/CD", label: "automated, versioned deployments" },
     ],
-    visual: "analytics",
+    visual: "docs",
   },
 ];
 
-export const secondaryProjects: SecondaryProject[] = [
-  {
-    title: "Knowledge Base / Docs Portal",
-    org: "Dot AI",
-    description:
-      "Centralized, role-based documentation platform for customers and internal teams — built with Docusaurus, Decap CMS, and automated GitLab CI/CD deployment.",
-  },
-];
+/**
+ * No secondary/"also built" projects right now — both real projects have
+ * full case studies above. Keep this exported (empty) so the section can
+ * come back without touching component code if a third project shows up.
+ */
+export const secondaryProjects: SecondaryProject[] = [];
 
 export const achievements: AchievementEntry[] = [
   {
@@ -420,6 +442,18 @@ export const achievements: AchievementEntry[] = [
     org: "Hexagon",
     description:
       "Awarded twice for consistently delivering exceptional results and demonstrating outstanding performance.",
+  },
+  {
+    title: "Zero-Downtime Platform Migration",
+    org: "Dot AI",
+    description:
+      "Architected and led a phased migration strategy that let legacy and modern UI systems coexist, so the transition never disrupted active enterprise customers.",
+  },
+  {
+    title: "Engineering Mentorship",
+    org: "Dot AI",
+    description:
+      "Actively mentors engineers on React architecture and performance best practices while driving sprint planning, technical estimation, and architecture reviews.",
   },
   {
     title: "Reward and Recognition",

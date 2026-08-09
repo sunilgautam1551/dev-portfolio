@@ -152,7 +152,10 @@ export function Hero() {
           </motion.div>
         </div>
 
-        <div ref={graphicRef} className="relative mx-auto aspect-square w-full max-w-md lg:max-w-none">
+        <div
+          ref={graphicRef}
+          className="relative mx-auto aspect-square w-full max-w-md lg:max-w-none"
+        >
           <div
             aria-hidden="true"
             className="bg-gradient-brand absolute inset-[8%] -z-10 rounded-full opacity-20 blur-3xl"

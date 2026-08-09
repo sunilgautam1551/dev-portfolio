@@ -1,17 +1,28 @@
+import { Briefcase, Clock, MapPin, Target, type LucideIcon } from "lucide-react";
+
 import { Reveal } from "@/components/motion/reveal";
 import { experience, identity, summary } from "@/lib/content";
 
-const quickFacts = [
-  { label: "Experience", value: "6+ years" },
-  { label: "Focus", value: "Frontend architecture & design systems" },
-  { label: "Most recently", value: `${experience[0]!.role}, ${experience[0]!.company}` },
-  { label: "Based in", value: identity.location },
+const quickFacts: { label: string; value: string; icon: LucideIcon }[] = [
+  { label: "Experience", value: "6+ years", icon: Clock },
+  { label: "Focus", value: "Frontend architecture & design systems", icon: Target },
+  {
+    label: "Most recently",
+    value: `${experience[0]!.role}, ${experience[0]!.company}`,
+    icon: Briefcase,
+  },
+  { label: "Based in", value: identity.location, icon: MapPin },
 ];
 
 export function About() {
   return (
     <section id="about" className="border-border scroll-mt-16 border-t">
-      <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
+      <div className="relative mx-auto max-w-6xl px-6 py-24 sm:py-32">
+        <div
+          aria-hidden="true"
+          className="bg-primary/20 pointer-events-none absolute top-0 left-1/4 -z-10 size-72 rounded-full opacity-0 blur-[100px] dark:opacity-100"
+        />
+
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
           <Reveal>
             <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
@@ -27,11 +38,19 @@ export function About() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <dl className="border-border grid grid-cols-1 gap-6 border-t pt-8 sm:grid-cols-2">
+              <dl className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {quickFacts.map((fact) => (
-                  <div key={fact.label}>
-                    <dt className="text-muted-foreground text-sm">{fact.label}</dt>
-                    <dd className="font-heading mt-1 text-base font-medium">{fact.value}</dd>
+                  <div
+                    key={fact.label}
+                    className="border-border bg-card hover:border-primary/30 flex items-start gap-3 rounded-xl border p-4 transition-colors"
+                  >
+                    <span className="bg-accent text-accent-foreground flex size-9 shrink-0 items-center justify-center rounded-lg">
+                      <fact.icon className="size-4.5" aria-hidden="true" />
+                    </span>
+                    <div>
+                      <dt className="text-muted-foreground text-sm">{fact.label}</dt>
+                      <dd className="font-heading mt-0.5 text-base font-medium">{fact.value}</dd>
+                    </div>
                   </div>
                 ))}
               </dl>

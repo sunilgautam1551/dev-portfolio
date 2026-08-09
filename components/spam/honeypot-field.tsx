@@ -7,7 +7,7 @@ import type { UseFormRegisterReturn } from "react-hook-form";
  */
 export function HoneypotField({ register }: { register: UseFormRegisterReturn }) {
   return (
-    <div aria-hidden="true" className="absolute -left-[9999px] top-0 h-0 w-0 overflow-hidden">
+    <div aria-hidden="true" className="absolute top-0 -left-[9999px] h-0 w-0 overflow-hidden">
       <label htmlFor="company">Company</label>
       <input id="company" type="text" tabIndex={-1} autoComplete="off" {...register} />
     </div>

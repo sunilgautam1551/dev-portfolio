@@ -79,7 +79,7 @@ const jsonLd = {
     "@type": "PostalAddress",
     addressLocality: identity.location,
   },
-  sameAs: [identity.linkedin],
+  sameAs: [identity.linkedin, identity.github],
 };
 
 export default function RootLayout({

@@ -74,9 +74,7 @@ export function CommandPalette() {
 
         <CommandGroup heading="Actions">
           <CommandItem
-            onSelect={() =>
-              run(() => setTheme(resolvedTheme === "dark" ? "light" : "dark"))
-            }
+            onSelect={() => run(() => setTheme(resolvedTheme === "dark" ? "light" : "dark"))}
           >
             {resolvedTheme === "dark" ? <Sun /> : <Moon />}
             Toggle theme

@@ -18,8 +18,8 @@ export default async function AdminGuestbookPage() {
       <div className="mx-auto max-w-2xl px-6 py-24">
         <h1 className="font-heading text-2xl font-semibold">Guestbook moderation</h1>
         <p className="text-muted-foreground mt-4 text-sm">
-          Upstash Redis isn&apos;t configured on this deployment yet. Add
-          UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN to enable the guestbook.
+          Upstash Redis isn&apos;t configured on this deployment yet. Add UPSTASH_REDIS_REST_URL and
+          UPSTASH_REDIS_REST_TOKEN to enable the guestbook.
         </p>
       </div>
     );

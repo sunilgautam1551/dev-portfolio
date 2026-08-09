@@ -9,7 +9,10 @@ export function isTurnstileConfigured(): boolean {
  * configured yet (local dev without a Cloudflare account) so the rest of the
  * form flow can still be exercised — remove that fallback once real keys are set.
  */
-export async function verifyTurnstileToken(token: string | undefined, ip: string): Promise<boolean> {
+export async function verifyTurnstileToken(
+  token: string | undefined,
+  ip: string,
+): Promise<boolean> {
   const secretKey = process.env.TURNSTILE_SECRET_KEY;
   if (!secretKey) return true;
   if (!token) return false;

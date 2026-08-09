@@ -17,7 +17,7 @@ export function Experience() {
             <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
               Experience
             </h2>
-            <Button asChild variant="outline" size="sm">
+            <Button asChild variant="outline" className="h-10 px-4 text-base">
               <Link href="/resume">
                 Full resume
                 <ArrowUpRight className="size-4" aria-hidden="true" />
@@ -41,7 +41,7 @@ export function Experience() {
                         {entry.role} · {entry.location}
                       </p>
                     </div>
-                    <span className="bg-secondary text-secondary-foreground shrink-0 rounded-full px-3 py-1 font-mono text-xs font-medium">
+                    <span className="border-border bg-secondary text-secondary-foreground shrink-0 rounded-full border px-3 py-1 font-mono text-xs font-medium">
                       {entry.period}
                     </span>
                   </div>

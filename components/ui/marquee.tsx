@@ -16,7 +16,7 @@ export function Marquee({ items, reverse = false, className }: MarqueeProps) {
   return (
     <div
       className={cn(
-        "flex w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]",
+        "flex w-full overflow-hidden mask-[linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]",
         className,
       )}
     >
@@ -29,7 +29,7 @@ export function Marquee({ items, reverse = false, className }: MarqueeProps) {
         {[...items, ...items].map((item, i) => (
           <span
             key={`${item}-${i}`}
-            className="border-border bg-card text-muted-foreground shrink-0 rounded-full border px-4 py-2 text-sm font-medium whitespace-nowrap"
+            className="border-primary/25 bg-secondary text-foreground shrink-0 rounded-full border px-4 py-2 text-sm font-medium whitespace-nowrap shadow-sm"
           >
             {item}
           </span>
