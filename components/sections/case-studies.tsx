@@ -4,6 +4,7 @@ import { Reveal } from "@/components/motion/reveal";
 import { GlowCard } from "@/components/ui/glow-card";
 import { caseStudies, secondaryProjects } from "@/lib/content";
 
+import { AnimatedStatValue } from "./animated-stat-value";
 import { AnalyticsMockup } from "./case-study-visuals/analytics-mockup";
 import { DashboardMockup } from "./case-study-visuals/dashboard-mockup";
 import { DocsMockup } from "./case-study-visuals/docs-mockup";
@@ -77,8 +78,8 @@ export function CaseStudies() {
                     <div className="border-border mt-6 grid grid-cols-2 gap-x-4 gap-y-5 border-t pt-6 sm:grid-cols-4">
                       {study.results.map((result) => (
                         <div key={result.label}>
-                          <p className="text-accent-foreground font-heading text-lg font-bold text-balance sm:text-xl">
-                            {result.value}
+                          <p className="text-accent-foreground font-heading text-lg font-bold text-balance tabular-nums sm:text-xl">
+                            <AnimatedStatValue value={result.value} />
                           </p>
                           <p className="text-muted-foreground mt-1 text-xs leading-snug">
                             {result.label}

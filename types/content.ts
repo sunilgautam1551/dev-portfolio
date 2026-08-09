@@ -30,10 +30,6 @@ export interface ProjectEntry {
   highlights: string[];
 }
 
-export interface ImpactStat {
-  value: string;
-  label: string;
-}
 
 export interface EngineeringPillar {
   title: string;

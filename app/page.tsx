@@ -8,7 +8,6 @@ import { Engineering } from "@/components/sections/engineering";
 import { Experience } from "@/components/sections/experience";
 import { GuestbookSection } from "@/components/sections/guestbook-section";
 import { Hero } from "@/components/sections/hero";
-import { ImpactStats } from "@/components/sections/impact-stats";
 import { Skills } from "@/components/sections/skills";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -31,7 +30,6 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <ImpactStats />
       <About />
       <Engineering />
       <CaseStudies />

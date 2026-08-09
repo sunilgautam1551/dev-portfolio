@@ -6,7 +6,6 @@ import type {
   ExperienceEntry,
   HomeSkillGroup,
   Identity,
-  ImpactStat,
   NavSection,
   ProjectEntry,
   SecondaryProject,
@@ -38,13 +37,6 @@ export const heroStats = [
 ];
 
 export const summary = `I'm a Senior Frontend Engineer with 6+ years of experience building scalable, high-performance SaaS and enterprise web applications using React.js, Next.js, TypeScript, and modern frontend architectures. My expertise spans frontend architecture, design systems, performance optimization, accessibility (WCAG 2.2), and enterprise-grade UI engineering. I have a proven track record of leading frontend initiatives, mentoring developers, and delivering scalable platforms with real-time workflows and high-volume data visualization.`;
-
-export const impactStats: ImpactStat[] = [
-  { value: "30%", label: "Bundle Size Reduction" },
-  { value: "35%", label: "Load Performance Improvement" },
-  { value: "10K+", label: "Live Asset Markers" },
-  { value: "13/17", label: "Core Modules Built Independently" },
-];
 
 export const engineeringPillars: EngineeringPillar[] = [
   {
