@@ -54,7 +54,7 @@ export default function ResumePage() {
         </div>
 
         <Button asChild>
-          <Link href="/resume.pdf" download>
+          <Link href="/Sunil_Gautam.pdf" download="Sunil_Gautam.pdf">
             <Download className="size-4" aria-hidden="true" />
             Download PDF
           </Link>

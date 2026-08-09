@@ -95,7 +95,7 @@ export function CommandPalette() {
             <FileText />
             View resume
           </CommandItem>
-          <CommandItem onSelect={() => run(() => window.open("/resume.pdf", "_blank"))}>
+          <CommandItem onSelect={() => run(() => window.open("/Sunil_Gautam.pdf", "_blank"))}>
             <Download />
             Download resume (PDF)
           </CommandItem>
