@@ -18,8 +18,8 @@ export const identity: Identity = {
   location: "Chandigarh, India",
   email: "sunil904gautam@gmail.com",
   phone: "+91 8837877083",
-  linkedin: "https://linkedin.com/in/sunil-gautam-308937170",
-  linkedinHandle: "linkedin.com/in/sunil-gautam-308937170",
+  linkedin: "https://www.linkedin.com/in/sunilgautamdev",
+  linkedinHandle: "linkedin.com/in/sunilgautamdev",
   github: "https://github.com/sunilgautam1551",
 };
 
