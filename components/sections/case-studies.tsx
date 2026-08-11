@@ -1,4 +1,4 @@
-import { Check, Layers } from "lucide-react";
+import { Check, ExternalLink, Layers } from "lucide-react";
 
 import { Reveal } from "@/components/motion/reveal";
 import { GlowCard } from "@/components/ui/glow-card";
@@ -6,6 +6,7 @@ import { caseStudies, secondaryProjects } from "@/lib/content";
 
 import { AnimatedStatValue } from "./animated-stat-value";
 import { AnalyticsMockup } from "./case-study-visuals/analytics-mockup";
+import { CanvasMockup } from "./case-study-visuals/canvas-mockup";
 import { DashboardMockup } from "./case-study-visuals/dashboard-mockup";
 import { DocsMockup } from "./case-study-visuals/docs-mockup";
 
@@ -13,6 +14,7 @@ const mockups = {
   dashboard: DashboardMockup,
   analytics: AnalyticsMockup,
   docs: DocsMockup,
+  canvas: CanvasMockup,
 };
 
 export function CaseStudies() {
@@ -24,8 +26,9 @@ export function CaseStudies() {
             Selected Work
           </h2>
           <p className="text-muted-foreground mt-4 max-w-xl text-base leading-relaxed">
-            Two platforms, in depth, instead of a long list of shallow ones. Visuals below are
-            illustrative mockups — the underlying products are confidential.
+            A few platforms, in depth, instead of a long list of shallow ones. Visuals below are
+            illustrative mockups — Dot Oracle and the Docs Portal are confidential, but CoBoard is
+            live and open to try.
           </p>
         </Reveal>
 
@@ -54,9 +57,22 @@ export function CaseStudies() {
                     <span className="text-accent-foreground font-mono text-sm">
                       {String(i + 1).padStart(2, "0")} · {study.org}
                     </span>
-                    <h3 className="font-heading mt-2 text-2xl font-semibold text-balance sm:text-3xl">
-                      {study.title}
-                    </h3>
+                    <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1.5">
+                      <h3 className="font-heading text-2xl font-semibold text-balance sm:text-3xl">
+                        {study.title}
+                      </h3>
+                      {study.link && (
+                        <a
+                          href={study.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="border-border bg-secondary text-secondary-foreground hover:bg-accent hover:text-accent-foreground inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-colors"
+                        >
+                          {study.linkLabel ?? "Live demo"}
+                          <ExternalLink className="size-3" aria-hidden="true" />
+                        </a>
+                      )}
+                    </div>
                     <p className="text-muted-foreground mt-1.5 text-base">{study.tagline}</p>
 
                     <p className="mt-5 text-base leading-relaxed">{study.challenge}</p>

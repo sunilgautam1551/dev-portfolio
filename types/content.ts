@@ -52,7 +52,9 @@ export interface CaseStudy {
   stack: string[];
   problems: string[];
   results: CaseStudyResult[];
-  visual: "dashboard" | "analytics" | "docs";
+  visual: "dashboard" | "analytics" | "docs" | "canvas";
+  link?: string;
+  linkLabel?: string;
 }
 
 export interface SecondaryProject {
