@@ -84,7 +84,15 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     category: "State Management & Data Fetching",
-    items: ["Redux", "Redux Toolkit", "TanStack Query", "Context API", "REST API Integration"],
+    items: [
+      "Redux",
+      "Redux Toolkit",
+      "Zustand",
+      "TanStack Query",
+      "Context API",
+      "GraphQL",
+      "REST API Integration",
+    ],
   },
   {
     category: "Testing & Quality",
@@ -101,12 +109,14 @@ export const skillGroups: SkillGroup[] = [
       "Leaflet",
       "OpenLayers",
       "Google Maps",
+      "Konva.js",
     ],
   },
   {
     category: "Frontend Architecture & Performance",
     items: [
       "Frontend Architecture",
+      "Progressive Web Application(PWA)",
       "Design Systems",
       "Component-Driven Development",
       "Micro-Frontends",
@@ -123,7 +133,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     category: "Auth & Integration",
-    items: ["Keycloak", "Okta", "NextAuth", "Docusaurus", "Decap CMS"],
+    items: ["Keycloak", "Okta", "NextAuth", "Docusaurus", "Decap CMS", "Supabase", "FireBase"],
   },
   {
     category: "Tools & Workflow",
@@ -232,7 +242,7 @@ export const experience: ExperienceEntry[] = [
       "Led migration to Next.js App Router architecture and established reusable component-driven frontend foundations using Material UI and TypeScript.",
       "Spearheaded frontend modernization initiatives for an AI-powered logistics intelligence platform, improving application scalability, consistency, and enterprise workflow usability across customer-facing modules.",
       "Introduced frontend engineering standards including reusable architecture patterns, linting, documentation practices, scalable folder structures, and testing foundations using Jest and React Testing Library.",
-      "Implemented WCAG 2.2 accessibility standards and enhanced authorization workflows using ABAC models integrated with Keycloak, Okta, and NextAuth.",
+      "Implemented WCAG 2.2 accessibility standards and enhanced authorization workflows using ABAC models integrated with Keycloak and NextAuth.",
       "Collaborated with backend and DevOps teams to optimize API contracts, caching strategies, CI/CD workflows, and frontend-backend integration efficiency.",
       "Actively contributed to sprint planning, technical estimations, architecture discussions, and pull request reviews while mentoring developers on React architecture and frontend performance best practices.",
     ],
@@ -269,7 +279,7 @@ export const experience: ExperienceEntry[] = [
       "Built reusable component-driven frontend architecture using React.js, TypeScript, SCSS, and Material UI to enhance maintainability and consistency.",
       "Managed framework upgrades, dependency modernization, and third-party integrations while ensuring minimal production impact and improved stability.",
       "Collaborated with cross-functional teams on sprint planning, backlog refinement, estimations, and architecture discussions in Agile delivery cycles.",
-      "Contributed to REST API design discussions and optimized frontend-backend integration for efficient data handling.",
+      "Contributed to REST API and GraphQL design discussions and optimized frontend-backend integration for efficient data handling.",
     ],
     stack: [
       "HTML5",
@@ -280,6 +290,7 @@ export const experience: ExperienceEntry[] = [
       "JavaScript",
       "TypeScript",
       "Material UI",
+      "GraphQL",
       "Neo4j",
       ".NET Core",
       "Jest",
@@ -291,7 +302,7 @@ export const experience: ExperienceEntry[] = [
     role: "Software Developer",
     company: "Daffodil Software",
     period: "Jan 2021 — Sep 2021",
-    location: "Chandigarh, India",
+    location: "Hisar, India",
     highlights: [
       "Developed scalable React.js applications and reusable UI components with focus on maintainability, asynchronous workflows, and responsive user experiences.",
       "Optimized Node.js and Express.js APIs by restructuring endpoints and improving query efficiency, reducing redundant data fetching and improving frontend responsiveness.",
@@ -391,7 +402,7 @@ export const caseStudies: CaseStudy[] = [
       "TanStack Query",
       "Material React Table",
       "React Testing Library",
-      "Jest"
+      "Jest",
     ],
     problems: [
       "Real-time data at scale — 10K+ live asset markers without rendering slowdown",
@@ -413,9 +424,9 @@ export const caseStudies: CaseStudy[] = [
     id: "coboard",
     title: "CoBoard",
     org: "Personal Project",
-    tagline: "Real-time multiplayer infinite-canvas whiteboard — built to run for $0/mo",
+    tagline: "Real-time multiplayer infinite-canvas whiteboard",
     challenge:
-      "Build a collaborative whiteboard that feels instant for every collaborator — live cursors, sub-second sync, full state recovery after a refresh — while running entirely on free infrastructure: no backend server to operate, no per-user cost, and no signup friction for anyone who just clicks a shared link.",
+      "Build a collaborative whiteboard that feels instant for every collaborator — live cursors, sub-second sync, full state recovery after a refresh, and no signup friction for anyone who just clicks a shared link.",
     role: "Solo — product design, real-time sync protocol, canvas rendering engine, and infrastructure",
     stack: [
       "Next.js 15",
