@@ -332,6 +332,21 @@ export const projects: ProjectEntry[] = [
     ],
   },
   {
+    title: "CoBoard",
+    org: "Personal Project",
+    description:
+      "A real-time, multiplayer infinite-canvas whiteboard — create a board, share the link, and draw together instantly with no signup required.",
+    highlights: [
+      "Designed and built a full multiplayer whiteboard engine from scratch — freehand drawing, shapes, arrow binding, and bound text labels — using React, TypeScript, and react-konva.",
+      "Engineered an operation-based real-time sync protocol over Supabase Realtime with last-write-wins conflict resolution, keeping every client deterministic without a full CRDT.",
+      "Designed message-budget-aware broadcasting (throttled cursor/drag updates, payload size limits) to run sustainably within Supabase's free-tier connection and message limits.",
+      "Built full state persistence and recovery — debounced snapshot writes to Postgres, hydration replay, and auto-reconnect with exponential backoff — so a board reloads exactly as it was left.",
+      "Shipped an accessible, mobile-capable UI (WAI-ARIA toolbar pattern, keyboard shortcuts, touch drawing and pinch-zoom) deployed on Vercel Hobby with zero infrastructure cost.",
+    ],
+    link: "https://canvasroom.vercel.app/",
+    linkLabel: "Live demo",
+  },
+  {
     title: "Knowledge Base / Docs Portal",
     org: "Dot AI",
     description:

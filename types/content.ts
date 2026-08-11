@@ -28,6 +28,8 @@ export interface ProjectEntry {
   org: string;
   description: string;
   highlights: string[];
+  link?: string;
+  linkLabel?: string;
 }
 
 

@@ -1,4 +1,4 @@
-import { Download, Mail, MapPin, Phone } from "lucide-react";
+import { Download, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -101,7 +101,20 @@ export default function ResumePage() {
           {projects.map((project) => (
             <div key={project.title}>
               <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                <h3 className="font-medium">{project.title}</h3>
+                <h3 className="font-medium">
+                  {project.title}
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary ml-2 inline-flex items-center gap-1 align-middle text-xs font-normal hover:underline"
+                    >
+                      {project.linkLabel ?? "Live demo"}
+                      <ExternalLink className="size-3" aria-hidden="true" />
+                    </a>
+                  )}
+                </h3>
                 <p className="text-muted-foreground font-mono text-sm">{project.org}</p>
               </div>
               <p className="text-muted-foreground mt-1 text-sm leading-relaxed">
