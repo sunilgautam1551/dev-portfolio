@@ -13,7 +13,16 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <ReactLenis root options={{ lerp: 0.1, duration: 1.2, smoothWheel: true, anchors: true }}>
+    <ReactLenis
+      root
+      options={{
+        lerp: 0.1,
+        duration: 1.2,
+        smoothWheel: true,
+        anchors: true,
+        stopInertiaOnNavigate: true,
+      }}
+    >
       {children}
     </ReactLenis>
   );

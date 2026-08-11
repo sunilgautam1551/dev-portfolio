@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Command, Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -12,6 +13,7 @@ import { navSections } from "@/lib/content";
 import { ThemeToggle } from "./theme-toggle";
 
 export function Nav() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -33,13 +35,19 @@ export function Nav() {
 
   // Highlights the nav item for whichever section is crossing the vertical
   // center of the viewport. No-ops gracefully on pages without these ids
-  // (e.g. /resume, /admin/guestbook).
+  // (e.g. /resume, /admin/guestbook). Re-runs on pathname change because Nav
+  // lives in the root layout and never remounts between client-side route
+  // transitions, so a mount-only effect would keep watching stale/detached
+  // section elements from whichever page was active on first load.
   useEffect(() => {
     const sections = navSections
       .map((section) => document.getElementById(section.id))
       .filter((el): el is HTMLElement => el !== null);
 
-    if (sections.length === 0) return;
+    if (sections.length === 0) {
+      setActiveId(null);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -51,7 +59,7 @@ export function Nav() {
 
     sections.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   return (
     <header
