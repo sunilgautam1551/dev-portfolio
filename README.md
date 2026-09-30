@@ -1,6 +1,6 @@
 # Sunil Gautam — Portfolio
 
-Personal portfolio for a Senior Frontend Engineer, built as a technical portfolio piece in its
+Personal portfolio for a Senior Software Engineer, built as a technical portfolio piece in its
 own right. Deploys entirely on Vercel's free Hobby tier — no paid backend, no persistent server.
 
 **Live:** [sunilgautam.dev](https://sunilgautam.dev) · **Repo:** [github.com/sunilgautam1551/dev-portfolio](https://github.com/sunilgautam1551/dev-portfolio)

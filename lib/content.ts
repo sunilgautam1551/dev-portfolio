@@ -14,7 +14,7 @@ import type {
 
 export const identity: Identity = {
   name: "Sunil Gautam",
-  title: "Senior Frontend Engineer",
+  title: "Senior Software Engineer",
   location: "Chandigarh, India",
   email: "sunil904gautam@gmail.com",
   phone: "+91 8837877083",
@@ -36,7 +36,7 @@ export const heroStats = [
   "Performance & Architecture",
 ];
 
-export const summary = `I'm a Senior Frontend Engineer with 6 years of experience building scalable, high-performance SaaS and enterprise web applications using React.js, Next.js, TypeScript, and modern frontend architectures. My expertise spans frontend architecture, design systems, performance optimization, accessibility (WCAG 2.2), and enterprise-grade UI engineering. I have a proven track record of leading frontend initiatives, mentoring developers, and delivering scalable platforms with real-time workflows and high-volume data visualization.`;
+export const summary = `I'm a Senior Software Engineer with 6 years of experience building scalable, high-performance SaaS and enterprise web applications using React.js, Next.js, TypeScript, and modern frontend architectures. My expertise spans frontend architecture, design systems, performance optimization, accessibility (WCAG 2.2), and enterprise-grade UI engineering. I have a proven track record of leading frontend initiatives, mentoring developers, and delivering scalable platforms with real-time workflows and high-volume data visualization.`;
 
 export const engineeringPillars: EngineeringPillar[] = [
   {
@@ -233,7 +233,7 @@ export const experience: ExperienceEntry[] = [
   {
     role: "Senior Software Engineer",
     company: "Dot AI",
-    period: "Feb 2024 — Jul 2026",
+    period: "Feb 2024 — Present",
     location: "Remote",
     highlights: [
       "Reduced bundle size by 30% and improved application load performance by 35% through route-based code splitting, lazy loading, rendering optimization, memoization, and asset optimization strategies.",

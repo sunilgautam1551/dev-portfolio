@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   description: tagline,
   keywords: [
     "Sunil Gautam",
-    "Senior Frontend Engineer",
+    "Senior Software Engineer",
     "React Developer",
     "Next.js Developer",
     "TypeScript",
