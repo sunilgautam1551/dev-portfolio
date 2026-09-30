@@ -95,13 +95,6 @@ export function HeroGraphic() {
               },
             });
           });
-
-          gsap.to(dots, {
-            filter: "drop-shadow(0 0 6px var(--primary))",
-            duration: 1.4,
-            stagger: { each: 0.3, repeat: -1, yoyo: true },
-            ease: "sine.inOut",
-          });
         });
     }, svgRef);
 

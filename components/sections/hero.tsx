@@ -15,14 +15,14 @@ import { HeroGraphic } from "./hero-graphic";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const textVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: 0.1 + i * 0.08, ease: [0.16, 1, 0.3, 1] as const },
-  }),
-};
+/**
+ * Hero copy animates in with pure CSS rather than framer-motion: motion's
+ * `initial="hidden"` is server-rendered as `opacity: 0`, which kept the
+ * headline invisible until the JS bundle hydrated — seconds on mobile.
+ */
+function enterDelay(i: number) {
+  return { animationDelay: `${100 + i * 80}ms` };
+}
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -76,42 +76,30 @@ export function Hero() {
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 lg:grid-cols-[1.1fr_1fr] lg:gap-8">
         <div>
-          <motion.p
-            custom={0}
-            initial="hidden"
-            animate="visible"
-            variants={textVariants}
-            className="text-accent-foreground font-mono text-sm font-medium tracking-wide"
+          <p
+            style={enterDelay(0)}
+            className="animate-hero-in text-accent-foreground font-mono text-sm font-medium tracking-wide"
           >
             {identity.title} · {identity.location}
-          </motion.p>
+          </p>
 
-          <motion.h1
-            custom={1}
-            initial="hidden"
-            animate="visible"
-            variants={textVariants}
-            className="font-heading mt-4 text-5xl leading-[1.02] font-bold tracking-tight text-balance sm:text-6xl lg:text-7xl"
+          <h1
+            style={enterDelay(1)}
+            className="animate-hero-in font-heading mt-4 text-5xl leading-[1.02] font-bold tracking-tight text-balance sm:text-6xl lg:text-7xl"
           >
             <span className="text-gradient-brand">{identity.name}</span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            custom={2}
-            initial="hidden"
-            animate="visible"
-            variants={textVariants}
-            className="text-muted-foreground mt-6 max-w-xl text-lg text-balance sm:text-xl"
+          <p
+            style={enterDelay(2)}
+            className="animate-hero-in text-muted-foreground mt-6 max-w-xl text-lg text-balance sm:text-xl"
           >
             {tagline}
-          </motion.p>
+          </p>
 
-          <motion.div
-            custom={3}
-            initial="hidden"
-            animate="visible"
-            variants={textVariants}
-            className="mt-8 flex flex-wrap gap-2"
+          <div
+            style={enterDelay(3)}
+            className="animate-hero-in mt-8 flex flex-wrap gap-2"
           >
             {heroTechTags.map((tag) => (
               <span
@@ -121,24 +109,18 @@ export function Hero() {
                 {tag}
               </span>
             ))}
-          </motion.div>
+          </div>
 
-          <motion.p
-            custom={4}
-            initial="hidden"
-            animate="visible"
-            variants={textVariants}
-            className="text-muted-foreground mt-4 font-mono text-xs tracking-wide sm:text-sm"
+          <p
+            style={enterDelay(4)}
+            className="animate-hero-in text-muted-foreground mt-4 font-mono text-xs tracking-wide sm:text-sm"
           >
             {heroStats.join(" · ")}
-          </motion.p>
+          </p>
 
-          <motion.div
-            custom={5}
-            initial="hidden"
-            animate="visible"
-            variants={textVariants}
-            className="mt-10 flex flex-wrap items-center gap-4"
+          <div
+            style={enterDelay(5)}
+            className="animate-hero-in mt-10 flex flex-wrap items-center gap-4"
           >
             <Button asChild size="lg" className="shadow-glow">
               <Link href="/#projects">
@@ -149,7 +131,7 @@ export function Hero() {
             <Button asChild variant="outline" size="lg">
               <Link href="/#contact">Get in Touch</Link>
             </Button>
-          </motion.div>
+          </div>
         </div>
 
         <div
@@ -164,11 +146,9 @@ export function Hero() {
         </div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.6 }}
-        className="text-muted-foreground absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs sm:flex"
+      <div
+        style={{ animationDelay: "1s" }}
+        className="animate-hero-in text-muted-foreground absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs sm:flex"
       >
         <span>Scroll</span>
         <motion.span
@@ -177,7 +157,7 @@ export function Hero() {
         >
           <ArrowDown className="size-4" aria-hidden="true" />
         </motion.span>
-      </motion.div>
+      </div>
     </section>
   );
 }

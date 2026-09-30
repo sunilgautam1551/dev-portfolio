@@ -6,8 +6,10 @@ import type { ReactNode } from "react";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 const variants: Variants = {
-  hidden: { opacity: 0, y: 32, scale: 0.97, filter: "blur(6px)" },
-  visible: { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" },
+  // Opacity + transform only: both are compositor-friendly, whereas animating
+  // `filter: blur()` forces a repaint every frame and janks low-end phones.
+  hidden: { opacity: 0, y: 32 },
+  visible: { opacity: 1, y: 0 },
 };
 
 interface RevealProps {

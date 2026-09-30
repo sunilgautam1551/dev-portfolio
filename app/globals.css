@@ -177,6 +177,43 @@
   }
 }
 
+@utility animate-hero-in {
+  animation: hero-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@utility animate-ambient-a {
+  animation: ambient-a 32s ease-in-out infinite;
+}
+
+@utility animate-ambient-b {
+  animation: ambient-b 36s ease-in-out infinite;
+}
+
+@keyframes ambient-a {
+  33% {
+    transform: translate(30px, 20px);
+  }
+  66% {
+    transform: translate(-15px, -10px);
+  }
+}
+
+@keyframes ambient-b {
+  33% {
+    transform: translate(-25px, -15px);
+  }
+  66% {
+    transform: translate(15px, 20px);
+  }
+}
+
 @utility bg-grain {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
