@@ -328,6 +328,168 @@
   }
 }
 
+/* ---- Hero copy ------------------------------------------------------ */
+
+/* Name rises out of a mask. Clip-path on the whole heading (not per word)
+   keeps the brand gradient continuous across the name. */
+.hero-name {
+  animation: hero-name 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes hero-name {
+  from {
+    clip-path: inset(100% -10% -20% -10%);
+    transform: translateY(0.35em);
+  }
+  to {
+    clip-path: inset(-20% -10% -20% -10%);
+    transform: none;
+  }
+}
+
+/* Vertical word rotator: 4 phrases + the first repeated, so the loop seam
+   is invisible. Each step holds ~2.2s, then slides up. Under reduced
+   motion the global override ends it on the (duplicate) first phrase. */
+.hero-rotator {
+  height: 1.25em;
+  overflow: hidden;
+  mask-image: linear-gradient(transparent, black 20%, black 80%, transparent);
+}
+
+.hero-rotator-track {
+  animation: hero-rotate 11s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+
+.hero-rotator-track > * {
+  height: 1.25em;
+  line-height: 1.25em;
+}
+
+@keyframes hero-rotate {
+  0%,
+  20% {
+    transform: translateY(0);
+  }
+  25%,
+  45% {
+    transform: translateY(-20%);
+  }
+  50%,
+  70% {
+    transform: translateY(-40%);
+  }
+  75%,
+  95% {
+    transform: translateY(-60%);
+  }
+  100% {
+    transform: translateY(-80%);
+  }
+}
+
+/* CSS-only count-up: an animatable integer custom property rendered via a
+   counter. Starts on first paint, needs no JS; browsers without @property
+   just show the final number. */
+@property --count {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+.count-up {
+  --count: var(--count-to);
+  counter-reset: count var(--count);
+  animation: count-up 2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.count-up::before {
+  content: counter(count);
+}
+
+@keyframes count-up {
+  from {
+    --count: 0;
+  }
+}
+
+/* Light sweep across the primary CTA on hover. */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgb(255 255 255 / 35%) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-shine:hover::after {
+  transform: translateX(120%);
+}
+
+/* Faint dot grid behind the hero, fading out toward the edges. */
+@utility bg-dot-grid {
+  background-image: radial-gradient(
+    color-mix(in oklch, var(--foreground) 14%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 70% 60% at 35% 45%, black, transparent 75%);
+}
+
+/* Letter-by-letter rise for text-valued hero metrics (e.g. "MFE"). */
+.hero-letter {
+  display: inline-block;
+  animation: hero-letter 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes hero-letter {
+  from {
+    opacity: 0;
+    transform: translateY(0.6em) rotate(8deg);
+    filter: blur(4px);
+  }
+}
+
+/* Pointer-driven 3D tilt of the hero graph (vars set in Hero). */
+.hero-tilt {
+  transform: perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+/* Orbit rings around the hub, slowly counter-rotating. */
+.hero-orbit {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  animation:
+    fade-in 1.2s ease-out both,
+    hero-spin var(--orbit-speed, 60s) linear infinite;
+}
+
+@keyframes hero-spin {
+  to {
+    transform: rotate(var(--orbit-turn, 360deg));
+  }
+}
+
+/* Satellite nodes gently twinkle once they have popped in. */
+.hero-twinkle {
+  animation: hero-twinkle 4s ease-in-out infinite;
+}
+
+@keyframes hero-twinkle {
+  50% {
+    opacity: 0.45;
+  }
+}
+
 @utility animate-gradient-pan {
   background-size: 200% 200%;
   animation: gradient-pan 8s ease-in-out infinite alternate;

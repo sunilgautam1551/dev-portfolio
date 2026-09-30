@@ -4,6 +4,7 @@ import type {
   EducationEntry,
   EngineeringPillar,
   ExperienceEntry,
+  HeroMetric,
   HomeSkillGroup,
   Identity,
   NavSection,
@@ -26,14 +27,22 @@ export const identity: Identity = {
 export const tagline =
   "I architect and build scalable frontend systems that power complex products, with a focus on performance, maintainability, and exceptional user experiences.";
 
-export const heroTechTags = ["React", "TypeScript", "Next.js", "Frontend Architecture"];
-
-export const heroStats = [
-  "6 Years",
+/** Cycled through in the hero's "Building …" line. */
+export const heroFocusAreas = [
   "Enterprise SaaS",
   "Real-Time Systems",
   "Data-Intensive Interfaces",
   "Performance & Architecture",
+];
+
+/**
+ * Hero figures, each backed by `experience` / `engineeringPillars`. Numeric
+ * values count up; string values reveal letter by letter instead.
+ */
+export const heroMetrics: HeroMetric[] = [
+  { value: 6, suffix: "+", label: "Years building for the web" },
+  { value: 30, suffix: "%", label: "Smaller bundles shipped" },
+  { value: "MFE", suffix: "", label: "Micro-frontend architecture" },
 ];
 
 export const summary = `I'm a Senior Software Engineer with 6 years of experience building scalable, high-performance SaaS and enterprise web applications using React.js, Next.js, TypeScript, and modern frontend architectures. My expertise spans frontend architecture, design systems, performance optimization, accessibility (WCAG 2.2), and enterprise-grade UI engineering. I have a proven track record of leading frontend initiatives, mentoring developers, and delivering scalable platforms with real-time workflows and high-volume data visualization.`;

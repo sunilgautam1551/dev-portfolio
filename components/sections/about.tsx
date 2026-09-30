@@ -42,17 +42,19 @@ export function About() {
             <Reveal delay={0.1}>
               <dl className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {quickFacts.map((fact) => (
+                  // A <dl> group may only hold <dt>/<dd>, so the icon lives inside
+                  // the <dt> and is positioned against the card.
                   <div
                     key={fact.label}
-                    className="border-border bg-card hover:border-primary/30 flex items-start gap-3 rounded-xl border p-4 transition-colors"
+                    className="border-border bg-card hover:border-primary/30 relative rounded-xl border p-4 pl-16 transition-colors"
                   >
-                    <span className="bg-accent text-accent-foreground flex size-9 shrink-0 items-center justify-center rounded-lg">
-                      <fact.icon className="size-4.5" aria-hidden="true" />
-                    </span>
-                    <div>
-                      <dt className="text-muted-foreground text-sm">{fact.label}</dt>
-                      <dd className="font-heading mt-0.5 text-base font-medium">{fact.value}</dd>
-                    </div>
+                    <dt className="text-muted-foreground text-sm">
+                      <span className="bg-accent text-accent-foreground absolute top-4 left-4 flex size-9 items-center justify-center rounded-lg">
+                        <fact.icon className="size-4.5" aria-hidden="true" />
+                      </span>
+                      {fact.label}
+                    </dt>
+                    <dd className="font-heading mt-0.5 text-base font-medium">{fact.value}</dd>
                   </div>
                 ))}
               </dl>

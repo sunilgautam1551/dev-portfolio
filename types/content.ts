@@ -32,7 +32,6 @@ export interface ProjectEntry {
   linkLabel?: string;
 }
 
-
 export interface EngineeringPillar {
   title: string;
   description: string;
@@ -86,5 +85,12 @@ export interface EducationEntry {
 
 export interface NavSection {
   id: string;
+  label: string;
+}
+
+export interface HeroMetric {
+  /** A number counts up; a string (e.g. an acronym) reveals letter by letter. */
+  value: number | string;
+  suffix: string;
   label: string;
 }
