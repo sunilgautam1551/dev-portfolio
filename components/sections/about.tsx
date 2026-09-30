@@ -1,6 +1,7 @@
 import { Briefcase, Clock, MapPin, Target, type LucideIcon } from "lucide-react";
 
 import { Reveal } from "@/components/motion/reveal";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 import { experience, identity, summary } from "@/lib/content";
 
 const quickFacts: { label: string; value: string; icon: LucideIcon }[] = [
@@ -25,6 +26,7 @@ export function About() {
 
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
           <Reveal>
+            <SectionEyebrow id="about" />
             <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
               About
             </h2>

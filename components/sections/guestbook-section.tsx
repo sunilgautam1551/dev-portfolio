@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 
 import { Reveal } from "@/components/motion/reveal";
 import { GuestbookList } from "@/components/guestbook/guestbook-list";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getApprovedEntriesCached } from "@/lib/guestbook";
 import { isRedisConfigured } from "@/lib/redis";
@@ -18,6 +19,7 @@ export async function GuestbookSection() {
     <section id="guestbook" className="border-border scroll-mt-16 border-t">
       <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
         <Reveal>
+          <SectionEyebrow id="guestbook" />
           <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
             Guestbook
           </h2>

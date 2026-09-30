@@ -137,6 +137,12 @@ export function Nav() {
         </div>
       </nav>
 
+      {/* Reading progress — a CSS scroll timeline (globals.css), no JS. */}
+      <div
+        aria-hidden="true"
+        className="scroll-progress bg-gradient-brand absolute inset-x-0 bottom-0 hidden h-0.5 origin-left"
+      />
+
       <AnimatePresence>
         {open && (
           <motion.div
@@ -147,16 +153,25 @@ export function Nav() {
             className="bg-background border-border overflow-hidden border-b lg:hidden"
           >
             <ul className="flex flex-col px-6 py-4">
-              {navSections.map((section) => (
-                <li key={section.id}>
+              {navSections.map((section, i) => (
+                <motion.li
+                  key={section.id}
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.05 + i * 0.035, duration: 0.3, ease: "easeOut" }}
+                >
                   <Link
                     href={`/#${section.id}`}
                     onClick={() => setOpen(false)}
                     className="text-foreground block rounded-md px-2 py-3 text-base font-medium"
                   >
-                    {section.label}
+                    <span
+                      className={activeId === section.id ? "text-accent-foreground" : undefined}
+                    >
+                      {section.label}
+                    </span>
                   </Link>
-                </li>
+                </motion.li>
               ))}
             </ul>
           </motion.div>

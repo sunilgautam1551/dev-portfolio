@@ -1,18 +1,12 @@
-"use client";
-
-import gsap from "gsap";
-import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-import { useLayoutEffect, useRef } from "react";
-
-import { useReducedMotion } from "@/hooks/use-reduced-motion";
-
-gsap.registerPlugin(MotionPathPlugin);
-
 /**
  * Signature hero visual: a small "component architecture" graph —
  * a hub node feeding satellite nodes, with data packets flowing along
  * the connections. Stands in for the real thing the copy talks about:
  * frontend architecture and data flow.
+ *
+ * Animated entirely declaratively (CSS keyframes in globals.css for the
+ * draw-in, SMIL <animateMotion> for the packets), so it ships zero JS,
+ * starts on first paint and never waits for hydration.
  */
 const nodes = [
   { id: "hub", cx: 300, cy: 300, r: 22 },
@@ -38,76 +32,30 @@ const edges: [string, string][] = [
   ["n5", "n6"],
 ];
 
+// Timeline (seconds): edges draw 0 → ~1.5, nodes pop from ~0.9, packets start after.
+const EDGE_STAGGER = 0.06;
+const NODE_START = 0.9;
+const NODE_STAGGER = 0.05;
+const PACKET_START = 1.7;
+const PACKET_STAGGER = 0.4;
+
 function nodeById(id: string) {
   return nodes.find((n) => n.id === id)!;
 }
 
+function edgeId(a: string, b: string) {
+  return `hero-edge-${a}-${b}`;
+}
+
 export function HeroGraphic() {
-  const svgRef = useRef<SVGSVGElement>(null);
-  const reduced = useReducedMotion();
-
-  useLayoutEffect(() => {
-    if (!svgRef.current) return;
-    const svg = svgRef.current;
-
-    const ctx = gsap.context(() => {
-      const paths = gsap.utils.toArray<SVGPathElement>(svg.querySelectorAll("[data-edge]"));
-      const dots = gsap.utils.toArray<SVGCircleElement>(svg.querySelectorAll("[data-node]"));
-      const packets = gsap.utils.toArray<SVGCircleElement>(svg.querySelectorAll("[data-packet]"));
-
-      if (reduced) {
-        gsap.set(paths, { opacity: 0.5 });
-        gsap.set(dots, { opacity: 1, scale: 1 });
-        gsap.set(packets, { opacity: 0 });
-        return;
-      }
-
-      paths.forEach((path) => {
-        const length = path.getTotalLength();
-        gsap.set(path, { strokeDasharray: length, strokeDashoffset: length, opacity: 1 });
-      });
-      gsap.set(dots, { scale: 0, transformOrigin: "center" });
-      gsap.set(packets, { opacity: 0 });
-
-      const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
-      tl.to(paths, { strokeDashoffset: 0, duration: 1, stagger: 0.06 })
-        .to(dots, { scale: 1, duration: 0.5, stagger: 0.05, ease: "back.out(2)" }, "-=0.6")
-        .add(() => {
-          packets.forEach((packet, i) => {
-            const edge = edges[i % edges.length];
-            const path = paths.find((p) => p.dataset.edge === `${edge[0]}-${edge[1]}`);
-            if (!path) return;
-            gsap.to(packet, {
-              opacity: 1,
-              duration: 0.3,
-              onComplete: () => {
-                gsap.to(packet, {
-                  motionPath: {
-                    path,
-                    align: path,
-                    alignOrigin: [0.5, 0.5],
-                  },
-                  duration: 2 + Math.random(),
-                  repeat: -1,
-                  delay: i * 0.4,
-                  ease: "sine.inOut",
-                });
-              },
-            });
-          });
-        });
-    }, svgRef);
-
-    return () => ctx.revert();
-  }, [reduced]);
+  const hub = nodeById("hub");
 
   return (
     <svg
-      ref={svgRef}
       viewBox="0 0 600 600"
       role="img"
       aria-label="Animated diagram of connected nodes representing frontend architecture and data flow"
-      className="h-full w-full"
+      className="h-full w-full overflow-visible"
     >
       <defs>
         <linearGradient id="hero-edge-gradient" x1="0" y1="0" x2="1" y2="1">
@@ -117,13 +65,16 @@ export function HeroGraphic() {
         </linearGradient>
       </defs>
 
-      {edges.map(([a, b]) => {
+      {edges.map(([a, b], i) => {
         const from = nodeById(a);
         const to = nodeById(b);
         return (
           <path
-            key={`${a}-${b}`}
-            data-edge={`${a}-${b}`}
+            key={edgeId(a, b)}
+            id={edgeId(a, b)}
+            className="hero-edge"
+            style={{ animationDelay: `${i * EDGE_STAGGER}s` }}
+            pathLength={1}
             d={`M ${from.cx} ${from.cy} L ${to.cx} ${to.cy}`}
             fill="none"
             stroke="url(#hero-edge-gradient)"
@@ -133,23 +84,59 @@ export function HeroGraphic() {
         );
       })}
 
-      {edges.slice(0, 5).map(([a, b], i) => (
-        <circle key={`packet-${a}-${b}-${i}`} data-packet r={5} fill="url(#hero-edge-gradient)" />
+      {[0, 1.6].map((offset) => (
+        <circle
+          key={offset}
+          className="hero-ping"
+          style={{ animationDelay: `${NODE_START + 0.6 + offset}s` }}
+          cx={hub.cx}
+          cy={hub.cy}
+          r={hub.r}
+          fill="none"
+          stroke="var(--gradient-via)"
+          strokeWidth={1.5}
+        />
       ))}
 
-      {nodes.map((node) => (
+      {edges.slice(0, 5).map(([a, b], i) => {
+        const begin = PACKET_START + i * PACKET_STAGGER;
+        return (
+          <circle
+            key={`packet-${a}-${b}`}
+            className="hero-packet"
+            style={{ animationDelay: `${begin}s` }}
+            r={5}
+            fill="url(#hero-edge-gradient)"
+          >
+            <animateMotion
+              dur={`${2.2 + (i % 3) * 0.35}s`}
+              begin={`${begin}s`}
+              repeatCount="indefinite"
+              calcMode="spline"
+              keyPoints="0;1"
+              keyTimes="0;1"
+              keySplines="0.45 0 0.55 1"
+            >
+              <mpath href={`#${edgeId(a, b)}`} />
+            </animateMotion>
+          </circle>
+        );
+      })}
+
+      {nodes.map((node, i) => (
         <circle
           key={node.id}
-          data-node
+          className="hero-node"
+          style={{
+            animationDelay: `${NODE_START + i * NODE_STAGGER}s`,
+            filter: node.id === "hub" ? "drop-shadow(0 0 18px var(--gradient-via))" : undefined,
+          }}
           cx={node.cx}
           cy={node.cy}
           r={node.r}
           fill={node.id === "hub" ? "url(#hero-edge-gradient)" : "var(--card)"}
           stroke="url(#hero-edge-gradient)"
           strokeWidth={node.id === "hub" ? 0 : 2}
-          style={
-            node.id === "hub" ? { filter: "drop-shadow(0 0 18px var(--gradient-via))" } : undefined
-          }
         />
       ))}
     </svg>

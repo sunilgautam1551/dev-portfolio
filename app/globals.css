@@ -214,6 +214,182 @@
   }
 }
 
+/*
+ * Scroll-driven motion. Everything below is keyed to scroll position by the
+ * browser itself (animation-timeline), so it costs no JS, runs even before
+ * hydration, and never hides content: browsers without support — and anyone
+ * with reduced motion — simply get the static, fully visible page.
+ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-in cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-timeline: view();
+      animation-range: entry calc(4% + var(--reveal-delay, 0%)) entry
+        calc(60% + var(--reveal-delay, 0%));
+    }
+
+    .hero-parallax {
+      animation: hero-parallax linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+
+    .scroll-progress {
+      display: block;
+      animation: scroll-progress linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+}
+
+@keyframes hero-parallax {
+  to {
+    transform: translateY(12%);
+    opacity: 0.35;
+  }
+}
+
+@keyframes scroll-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Hero architecture graph: edges draw in, nodes pop, packets fade in once
+   their SMIL motion begins, and the hub emits a slow radar ping. */
+.hero-edge {
+  stroke-dasharray: 1;
+  animation: hero-draw 1s cubic-bezier(0.33, 1, 0.68, 1) both;
+}
+
+.hero-node {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hero-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.hero-packet {
+  animation: fade-in 0.3s ease-out both;
+}
+
+.hero-ping {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hero-ping 3.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-packet,
+  .hero-ping {
+    display: none;
+  }
+}
+
+@keyframes hero-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes hero-pop {
+  from {
+    transform: scale(0);
+  }
+}
+
+@keyframes hero-ping {
+  from {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@utility animate-gradient-pan {
+  background-size: 200% 200%;
+  animation: gradient-pan 8s ease-in-out infinite alternate;
+}
+
+@keyframes gradient-pan {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+@utility animate-nudge {
+  animation: nudge 1.6s ease-in-out infinite;
+}
+
+@keyframes nudge {
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* Cursor-following glow for cards. `--mx/--my` are set by PointerSpotlight;
+   `isolation` lets the z-index:-1 layer sit above the card background but
+   beneath its content. */
+.spotlight {
+  isolation: isolate;
+}
+
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklch, var(--primary) 11%, transparent),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+/* Circular theme reveal (see ThemeToggle) — disable the default crossfade. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::selection {
+  background: color-mix(in oklch, var(--primary) 28%, transparent);
+}
+
 @utility bg-grain {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }

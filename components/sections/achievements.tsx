@@ -2,6 +2,7 @@ import { Award, GitBranch, Sparkles, Star, Users, type LucideIcon } from "lucide
 
 import { Reveal } from "@/components/motion/reveal";
 import { GlowCard } from "@/components/ui/glow-card";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 import { achievements } from "@/lib/content";
 
 // Positional, matched to the order in lib/content.ts — not a cycling fallback.
@@ -12,6 +13,7 @@ export function Achievements() {
     <section id="achievements" className="border-border scroll-mt-16 border-t">
       <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
         <Reveal>
+          <SectionEyebrow id="achievements" />
           <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
             Achievements
           </h2>

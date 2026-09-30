@@ -3,6 +3,7 @@ import { Boxes, Check, Code2, Database, LayoutGrid, Sparkles, type LucideIcon } 
 import { Reveal } from "@/components/motion/reveal";
 import { GlowCard } from "@/components/ui/glow-card";
 import { Marquee } from "@/components/ui/marquee";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 import { alsoWorkedWith, homeSkillGroups } from "@/lib/content";
 
 const icons: Record<string, LucideIcon> = {
@@ -22,6 +23,7 @@ export function Skills() {
     <section id="skills" className="border-border scroll-mt-16 border-t">
       <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
         <Reveal>
+          <SectionEyebrow id="skills" />
           <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">Skills</h2>
           <p className="text-muted-foreground mt-4 max-w-xl text-base leading-relaxed">
             Tools I use every day, plus everything else I&apos;ve worked with over the years.

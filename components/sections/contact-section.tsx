@@ -12,6 +12,7 @@ import { TurnstileWidget } from "@/components/spam/turnstile-widget";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 import {
   Select,
   SelectContent,
@@ -72,6 +73,7 @@ export function ContactSection() {
       <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
           <Reveal>
+            <SectionEyebrow id="contact" />
             <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
               Contact
             </h2>

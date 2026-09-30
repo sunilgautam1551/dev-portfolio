@@ -2,6 +2,7 @@ import { Check, ExternalLink, Layers } from "lucide-react";
 
 import { Reveal } from "@/components/motion/reveal";
 import { GlowCard } from "@/components/ui/glow-card";
+import { SectionEyebrow } from "@/components/ui/section-eyebrow";
 import { caseStudies, secondaryProjects } from "@/lib/content";
 
 import { AnimatedStatValue } from "./animated-stat-value";
@@ -22,6 +23,7 @@ export function CaseStudies() {
     <section id="projects" className="border-border scroll-mt-16 border-t">
       <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
         <Reveal>
+          <SectionEyebrow id="projects" />
           <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
             Selected Work
           </h2>

@@ -8,6 +8,7 @@ import { Nav } from "@/components/layout/nav";
 import { SkipLink } from "@/components/layout/skip-link";
 import { SmoothScrollProvider } from "@/components/layout/smooth-scroll-provider";
 import { ThemeProvider } from "@/components/layout/theme-provider";
+import { PointerSpotlight } from "@/components/motion/pointer-spotlight";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { identity, summary, tagline } from "@/lib/content";
@@ -107,6 +108,7 @@ export default function RootLayout({
             </SmoothScrollProvider>
             <Toaster />
             <CommandPaletteLoader />
+            <PointerSpotlight />
           </TooltipProvider>
         </ThemeProvider>
       </body>

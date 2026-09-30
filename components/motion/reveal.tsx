@@ -1,16 +1,6 @@
-"use client";
+import type { CSSProperties, ReactNode } from "react";
 
-import { motion, type Variants } from "framer-motion";
-import type { ReactNode } from "react";
-
-import { useReducedMotion } from "@/hooks/use-reduced-motion";
-
-const variants: Variants = {
-  // Opacity + transform only: both are compositor-friendly, whereas animating
-  // `filter: blur()` forces a repaint every frame and janks low-end phones.
-  hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0 },
-};
+import { cn } from "@/lib/utils";
 
 interface RevealProps {
   children: ReactNode;
@@ -19,25 +9,19 @@ interface RevealProps {
   as?: "div" | "li";
 }
 
-export function Reveal({ children, className, delay = 0, as = "div" }: RevealProps) {
-  const reduced = useReducedMotion();
-  const MotionTag = as === "li" ? motion.li : motion.div;
-
-  if (reduced) {
-    const Tag = as;
-    return <Tag className={className}>{children}</Tag>;
-  }
+/**
+ * Fades content up as it scrolls into view. Driven purely by the CSS
+ * `.reveal` scroll timeline in globals.css — no JS, so it works before
+ * hydration and content is never server-rendered hidden. `delay` (seconds,
+ * kept for call-site compatibility) staggers siblings by shifting where in
+ * the scroll range each one starts.
+ */
+export function Reveal({ children, className, delay = 0, as: Tag = "div" }: RevealProps) {
+  const style = delay ? ({ "--reveal-delay": `${delay * 100}%` } as CSSProperties) : undefined;
 
   return (
-    <MotionTag
-      className={className}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
-      variants={variants}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay }}
-    >
+    <Tag className={cn("reveal", className)} style={style}>
       {children}
-    </MotionTag>
+    </Tag>
   );
 }

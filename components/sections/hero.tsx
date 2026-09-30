@@ -1,19 +1,13 @@
 "use client";
 
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowDown, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
 import Link from "next/link";
-import { useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
 
 import { Button } from "@/components/ui/button";
-import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { heroStats, heroTechTags, identity, tagline } from "@/lib/content";
 
 import { HeroGraphic } from "./hero-graphic";
-
-gsap.registerPlugin(ScrollTrigger);
 
 /**
  * Hero copy animates in with pure CSS rather than framer-motion: motion's
@@ -25,33 +19,10 @@ function enterDelay(i: number) {
 }
 
 export function Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const graphicRef = useRef<HTMLDivElement>(null);
   const spotlightRef = useRef<HTMLDivElement>(null);
-  const reduced = useReducedMotion();
-
-  useLayoutEffect(() => {
-    if (reduced || !sectionRef.current || !graphicRef.current) return;
-
-    const ctx = gsap.context(() => {
-      gsap.to(graphicRef.current, {
-        yPercent: 12,
-        opacity: 0.4,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, [reduced]);
 
   function handleMouseMove(event: React.MouseEvent<HTMLElement>) {
-    if (reduced || !spotlightRef.current) return;
+    if (!spotlightRef.current) return;
     const rect = event.currentTarget.getBoundingClientRect();
     spotlightRef.current.style.setProperty("--x", `${event.clientX - rect.left}px`);
     spotlightRef.current.style.setProperty("--y", `${event.clientY - rect.top}px`);
@@ -60,7 +31,6 @@ export function Hero() {
   return (
     <section
       id="top"
-      ref={sectionRef}
       onMouseMove={handleMouseMove}
       className="relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden pt-16"
     >
@@ -87,7 +57,7 @@ export function Hero() {
             style={enterDelay(1)}
             className="animate-hero-in font-heading mt-4 text-5xl leading-[1.02] font-bold tracking-tight text-balance sm:text-6xl lg:text-7xl"
           >
-            <span className="text-gradient-brand">{identity.name}</span>
+            <span className="text-gradient-brand animate-gradient-pan">{identity.name}</span>
           </h1>
 
           <p
@@ -97,10 +67,7 @@ export function Hero() {
             {tagline}
           </p>
 
-          <div
-            style={enterDelay(3)}
-            className="animate-hero-in mt-8 flex flex-wrap gap-2"
-          >
+          <div style={enterDelay(3)} className="animate-hero-in mt-8 flex flex-wrap gap-2">
             {heroTechTags.map((tag) => (
               <span
                 key={tag}
@@ -134,10 +101,8 @@ export function Hero() {
           </div>
         </div>
 
-        <div
-          ref={graphicRef}
-          className="relative mx-auto aspect-square w-full max-w-md lg:max-w-none"
-        >
+        {/* Parallax-fades on scroll via the CSS `.hero-parallax` scroll timeline. */}
+        <div className="hero-parallax relative mx-auto aspect-square w-full max-w-md lg:max-w-none">
           <div
             aria-hidden="true"
             className="bg-gradient-brand absolute inset-[8%] -z-10 rounded-full opacity-20 blur-3xl"
@@ -151,12 +116,7 @@ export function Hero() {
         className="animate-hero-in text-muted-foreground absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs sm:flex"
       >
         <span>Scroll</span>
-        <motion.span
-          animate={reduced ? undefined : { y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
-        >
-          <ArrowDown className="size-4" aria-hidden="true" />
-        </motion.span>
+        <ArrowDown className="animate-nudge size-4" aria-hidden="true" />
       </div>
     </section>
   );
