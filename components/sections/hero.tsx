@@ -20,7 +20,7 @@ function enterDelay(i: number): CSSProperties {
   return { animationDelay: `${100 + i * 90}ms` };
 }
 
-/** Max tilt (degrees) of the hero graph as the pointer moves across the hero. */
+/** Max tilt (degrees) of the hero diagram as the pointer moves across the hero. */
 const MAX_TILT = 10;
 
 const socials = [
@@ -37,7 +37,8 @@ export function Hero() {
     spotlightRef.current?.style.setProperty("--x", `${event.clientX - rect.left}px`);
     spotlightRef.current?.style.setProperty("--y", `${event.clientY - rect.top}px`);
 
-    // 3D tilt: the graph leans toward the pointer. Only transforms, so it
+    // 3D tilt: the diagram leans toward the pointer; its layers sit at
+    // different Z depths, so they parallax against each other. Only transforms, so it
     // stays on the compositor; skipped under reduced motion.
     const tilt = tiltRef.current;
     if (!tilt || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -218,12 +219,12 @@ export function Hero() {
         </div>
 
         {/* Parallax-fades on scroll via the CSS `.hero-parallax` scroll timeline. */}
-        <div className="hero-parallax relative mx-auto aspect-square w-full max-w-md lg:max-w-none">
+        <div className="hero-parallax relative mx-auto w-full max-w-md lg:max-w-[30rem]">
           <div
             aria-hidden="true"
-            className="bg-gradient-brand absolute inset-[8%] -z-10 rounded-full opacity-20 blur-3xl"
+            className="bg-gradient-brand absolute inset-[10%] -z-10 rounded-full opacity-25 blur-3xl"
           />
-          <div ref={tiltRef} className="hero-tilt h-full w-full">
+          <div ref={tiltRef} className="hero-tilt w-full">
             <HeroGraphic />
           </div>
         </div>
